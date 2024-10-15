@@ -1,0 +1,34 @@
+﻿@page "/saludo"
+@rendermode InteractiveServer
+
+<input placeholder="Ingrese su nombre" id="nombre" @bind="nombre">
+
+<button class="btn btn-primary" @onclick="saludobtn">Saludo</button>
+
+<label role="status" id="saludar">@resultado</label>
+
+<label style="color:red" role="status" id="error">@error</label>
+
+@code {
+    private String resultado;
+
+    private String error;
+
+    private String nombre;
+
+    private void saludobtn()
+    {
+        if (!String.IsNullOrEmpty(nombre)){
+
+            resultado = "Hola, " + nombre;
+            error = "";
+        }
+        else
+        {
+            resultado = "";
+            error = "Campo Vacio";
+
+        }
+
+    }
+}
