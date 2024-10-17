@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    for(int i = 1; i < 12; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            int resultado = i*j;
+            
+        }
+    }
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tabla de Multiplicar</h1>
+    <table id="tabla" border="1">
+        <thead>
+            <tr>
+                <th>Tabla de Multiplicar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i <= 12; i++)
+            {
+                
+                for (int j = 0; j <= 10; j++)
+                {
+                    <tr>
+                        <td>@i.ToString() * @j.ToString()</td>
+                        <td>@(i*j)</td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
