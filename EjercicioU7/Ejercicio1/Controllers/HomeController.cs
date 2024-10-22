@@ -29,7 +29,7 @@ namespace Ejercicio1.Controllers
                 ViewData["Hora"] = "Buenas noches";
             }
             
-            ViewBag["Fecha"] = actual;
+            ViewBag.Fecha = actual;
             return View();
         }
 
