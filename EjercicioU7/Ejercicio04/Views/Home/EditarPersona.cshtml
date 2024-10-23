@@ -1,0 +1,38 @@
+﻿@using Ejercicio04.Models.VM
+@model ClsEditarPersonaVM
+
+@{
+    ViewBag.Title = "Editar Persona";
+}
+
+<h2>Editar Persona</h2>
+
+<form method="post" action="@Url.Action("GuardarPersona", "Home")">
+    <div>
+        <label>Nombre:</label>
+        @Html.TextBoxFor(m => m.nombre, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Apellidos:</label>
+        @Html.TextBoxFor(m => m.apellidos, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Departamento:</label>
+        @Html.DropDownListFor(m => m.idDepartamento, new SelectList(Model.Departamentos, "idDepartamento", "nombreDepartamento", Model.idDepartamento), new { @class = "form-control" })
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>
+
+<!-- Estilos opcionales -->
+<style>
+    .form-control {
+        width: 300px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        margin-top: 10px;
+    }
+</style>
