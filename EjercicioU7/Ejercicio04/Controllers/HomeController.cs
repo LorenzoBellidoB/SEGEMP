@@ -34,6 +34,34 @@ namespace Ejercicio04.Controllers
 
             return View(viewModel);
         }
+        // A este action se accede cuando el usuario pulsa el botón en la vista tipo submit
+        //[HttpPost]
+        //public ActionResult EditarPersona(string Nombre)
+        //{
+        //    ClsPersona persona = ClsListado.ObtenerPersonaAleatoria(); // Llamada al método estático
+
+        //    var viewModel = new ClsEditarPersonaVM
+        //    {
+        //        nombre = Nombre,
+        //        apellidos = persona.apellidos,
+        //        idDepartamento = persona.idDepartamento
+        //    };
+
+        //    return View(viewModel);
+        //}
+        [HttpPost]
+        public ActionResult EditarPersona(ClsPersona persona)
+        {
+
+            var viewModel = new ClsEditarPersonaVM
+            {
+                nombre = persona.nombre,
+                apellidos = persona.apellidos,
+                idDepartamento = persona.idDepartamento
+            };
+
+            return View(viewModel);
+        }
 
         public IActionResult Privacy()
         {

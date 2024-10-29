@@ -17,10 +17,11 @@ Models
     Public Static List <ClsDepartamento> ObtenerDepartamentos()
 
 
-  VM
-   ClsEditarPersonaVM: ClsPersona
-	List<ClsDepartamentos>departamentos(get)
-	ClsEditarPersonaVM(){
-	departamentos= ClsListados.ObtenerDepartamentos(){	
-	}	
+VM
+ClsEditarPersonaVM : ClsPersona
+	List<ClsDepartamento> departamentos (get)
+
+	ClsEditarPersonaVM() {
+		departamentos = ClsListado.ObtenerDepartamentos()
+	}
 
