@@ -1,8 +1,9 @@
-using Ejercicio2.Models;
+using Ejercicio03.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Ejercicio03ENT;
 
-namespace Ejercicio2.Controllers
+namespace Ejercicio03.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,17 +19,22 @@ namespace Ejercicio2.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(string nombre)
+      
+        public ActionResult Editar()
         {
-            ViewBag.Nombre = nombre;
-            return View("Saludo");
+            return View();
         }
 
-        public IActionResult Saludo()
+        [HttpPost]
+        public ActionResult Editar(ClsPersona persona)
         {
-            
-            return View();
+            string idPersona = persona.IdPersona;
+            string nombre = persona.Nombre;
+            string apellidos = persona.Apellidos;
+            string edad = persona.Edad;
+
+
+            return View("PersonaModificada", persona);
         }
 
         public IActionResult Privacy()
