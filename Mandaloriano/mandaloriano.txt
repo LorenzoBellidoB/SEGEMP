@@ -1,0 +1,24 @@
+ENT
+	// La usaremos para guardar cada mision del mandaloriano
+	ClsMision
+		IdMision: Int (get)
+		Ttitulo: String (get,set)
+		Descripcion: String (get,set)
+		Recompensa: Double (get,set)
+
+DAL
+	// Lo utilizaremos para obtener el listado de Misiones
+	ClsListado
+	Public Static List <ClsMision> ListadoCompletoMisionesDal()
+	public static ObtenerMisionDal(id): ClsMision
+
+BL 
+	// La usaremos para enviar un listado y una misión seleccionada, si no cumple la norma se enviará un listado null
+		ClsAcceso
+		public List<ClsMisiones> ListadoCompletoMisionesBl()
+		public static ObtenerMisionBl(id): ClsMision
+
+UI
+	// Cogemos el listado recibido por la BL y los datos de la mision para la vista
+	ViewModel: ClsListadoMisionesVM: ClsMisiones
+	List<ClsMisiones> ListadoMisionesVM()
