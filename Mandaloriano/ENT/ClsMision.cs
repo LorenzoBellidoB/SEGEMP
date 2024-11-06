@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ENT
 {
-    internal class ClsMision
+    /// <summary>
+    /// Clase que recoge las propiedades de una mision
+    /// </summary>
+    public class ClsMision
     {
+        #region Propiedades
+        public int IdMision { get; }
+        public string Titulo { get; set; }
+        public string Descripcion {  get; set; }
+        public double Recompensa {  get; set; }
+        #endregion
     }
 }
