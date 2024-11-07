@@ -2,7 +2,35 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model Mandaloriano.ViewModels.ListadoPersonaVM
+
+@if (Model.Listado == null)
+{
+    <h1>El listado de misiones no estará disponible hasta las 8:00</h1>
+}
+else
+{
+    <div >
+        <div>
+            <form method="post">
+                <select name="id" id="id" >
+                    @foreach (var mision in Model.Listado)
+                    {
+                        <option value="@mision.IdMision">@mision.Titulo</option>
+                    }
+                </select>
+                <input type="submit" value="Seleccionar" />
+            </form>
+       
+        </div>
+        @if (Model.MisionSelected != null)
+        {
+            <div>
+            <h2>@Model.MisionSelected.Titulo</h2>
+            <h4>@Model.MisionSelected.Descripcion</h4>
+            <h4>@Model.MisionSelected.Recompensa</h4>
+            </div>
+        }
+        </div>
+}
+

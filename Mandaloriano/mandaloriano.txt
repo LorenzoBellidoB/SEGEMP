@@ -20,5 +20,5 @@ BL
 
 UI
 	// Cogemos el listado recibido por la BL y los datos de la mision para la vista
-	ViewModel: ClsListadoMisionesVM: ClsMisiones
+	ViewModel: ClsListadoMisionesVM: ClsMision
 	List<ClsMisiones> ListadoMisionesVM()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    internal class ClsListadoMisionesVM
+    public class ClsListadoMisionesVM
     {
     }
 }

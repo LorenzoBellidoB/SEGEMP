@@ -12,7 +12,7 @@ namespace ENT
     public class ClsMision
     {
         #region Propiedades
-        public int IdMision { get; }
+        public int IdMision { get; set; }
         public string Titulo { get; set; }
         public string Descripcion {  get; set; }
         public double Recompensa {  get; set; }

@@ -1,4 +1,6 @@
+using BL;
 using Mandaloriano.Models;
+using Mandaloriano.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,27 +8,28 @@ namespace Mandaloriano.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        
         public IActionResult Index()
         {
-            return View();
+            ListadoPersonaVM listadoPersonaVM = new ListadoPersonaVM();
+
+            listadoPersonaVM.Listado = ClsAcceso.ListadoCompletoMisionesBl();
+
+            return View(listadoPersonaVM);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(int id)
         {
-            return View();
+            ListadoPersonaVM listadoPersonaVM = new ListadoPersonaVM();
+
+            listadoPersonaVM.Listado = ClsAcceso.ListadoCompletoMisionesBl();
+
+            listadoPersonaVM.MisionSelected = ClsAcceso.MisionSelectedBl(id);
+
+            return View(listadoPersonaVM);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }
