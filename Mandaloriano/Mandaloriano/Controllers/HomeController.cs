@@ -11,11 +11,19 @@ namespace Mandaloriano.Controllers
         
         public IActionResult Index()
         {
-            ListadoPersonaVM listadoPersonaVM = new ListadoPersonaVM();
+            try
+            {
+                ListadoPersonaVM listadoPersonaVM = new ListadoPersonaVM();
 
-            listadoPersonaVM.Listado = ClsAcceso.ListadoCompletoMisionesBl();
+                listadoPersonaVM.Listado = ClsAcceso.ListadoCompletoMisionesBl();
 
-            return View(listadoPersonaVM);
+                return View(listadoPersonaVM);
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
+            
         }
 
         [HttpPost]
