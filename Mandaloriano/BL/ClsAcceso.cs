@@ -20,12 +20,13 @@ namespace BL
             if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 8)
             {
                 listado = null;
-                
+                throw new HourException("Es demasiado tarde ya.");
             }
             else
             {
                 listado = ClsListado.ListadoCompletoMisionesDal();
             }
+            
 
             return listado;
         }

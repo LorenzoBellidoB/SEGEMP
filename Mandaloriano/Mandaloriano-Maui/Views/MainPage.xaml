@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:Mandaloriano_Maui.ViewModels"
+             x:Class="Mandaloriano_Maui.MainPage"
+             BackgroundImageSource="https://images.wallpapersden.com/image/download/poster-of-the-mandalorian_bGhrZmWUmZqaraWkpJRobWllrWdpZWU.jpg">
+
+    <ContentPage.BindingContext>
+        <vmodel:ListadoMisionesVM></vmodel:ListadoMisionesVM>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="20">
+        <Label IsVisible="{Binding Visible}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large" Text="No hay misiones hasta las 8:00"></Label>
+        <Picker IsVisible="{Binding VisiblePicker}" ItemsSource="{Binding ListaMisiones}" ItemDisplayBinding="{Binding Titulo}" SelectedItem="{Binding Mision}"
+                TextColor="Yellow" BackgroundColor="#33333F"/>
+        <Label Text="{Binding Mision.IdMision}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large"/>
+        <Label Text="{Binding Mision.Titulo}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large"/>
+        <Label Text="{Binding Mision.Descripcion}" TextColor="Yellow" FontAttributes="Italic" FontSize="Medium"/>
+        <Label Text="{Binding Mision.Recompensa}" TextColor="Yellow" FontAttributes="Italic" FontSize="Medium"/>
+    </VerticalStackLayout>
+</ContentPage>
