@@ -9,7 +9,7 @@
         <vmodel:ListadoMisionesVM></vmodel:ListadoMisionesVM>
     </ContentPage.BindingContext>
     <VerticalStackLayout Padding="20">
-        <Label IsVisible="{Binding Visible}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large" Text="No hay misiones hasta las 8:00"></Label>
+        <Label IsVisible="{Binding Visible}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large" Text="No hay misiones hasta las 8"></Label>
         <Picker IsVisible="{Binding VisiblePicker}" ItemsSource="{Binding ListaMisiones}" ItemDisplayBinding="{Binding Titulo}" SelectedItem="{Binding Mision}"
                 TextColor="Yellow" BackgroundColor="#33333F"/>
         <Label Text="{Binding Mision.IdMision}" TextColor="Yellow" FontAttributes="Bold" FontSize="Large"/>

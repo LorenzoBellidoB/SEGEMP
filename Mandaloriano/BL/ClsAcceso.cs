@@ -17,9 +17,9 @@ namespace BL
         public static List<ClsMision> ListadoCompletoMisionesBl()
         {
             List<ClsMision> listado;
-            if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 8)
+            if (DateTime.Now.Hour > 0 && DateTime.Now.Hour < 18)
             {
-                listado = null;
+                
                 throw new HourException("Es demasiado tarde ya.");
             }
             else
