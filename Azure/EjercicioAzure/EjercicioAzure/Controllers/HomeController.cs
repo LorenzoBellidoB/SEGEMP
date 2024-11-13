@@ -1,32 +1,52 @@
 using EjercicioAzure.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using DAL;
+using DAL.Conexion;
+using Microsoft.Data.SqlClient;
+
 
 namespace EjercicioAzure.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+       
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Conexion()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Conexion(Conexion conex)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            try
+            {
+                conex = new Conexion();
+                using (SqlConnection con = conex.ObtenerConexion())
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        ViewBag.estado = "Conexión exitosa";
+                    }
+                    else
+                    {
+                        ViewBag.estado = "Error: la conexión no pudo establecerse";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.estado = "Error al intentar conectar con la base de datos";
+            }
+
+            return View();
         }
     }
+
 }
