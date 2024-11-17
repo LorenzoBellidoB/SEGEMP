@@ -47,9 +47,9 @@
 </style>
 
 <div class="container">
-    @if (Model.Listado == null)
+    @if (ViewBag.Error != null)
     {
-        <h1>El listado de misiones no estará disponible hasta las 8:00</h1>
+        <h1>@ViewBag.Error</h1>
     }
     else
     {
@@ -65,7 +65,7 @@
             </form>
        
         </div>
-        @if (Model.MisionSelected != null)
+        @if (Model.MisionSelected != null)  
         {
             <div class="mission-details">
                 <h2>@Model.MisionSelected.Titulo</h2>

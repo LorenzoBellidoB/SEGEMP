@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Ejercicio03.ViewModels.ListadoCochesVM
+<div class="text-center">
+    <div>
+        <form method="post">
+            <select name="id" id="id">
+                @foreach(var marca in Model.ListadoMarcas)
+                {
+                    <option value="@marca.Id">@marca.Nombre</option>
+                }
+            </select>
+            <input type="submit" value="Seleccionar" />
+        </form>
+    </div>
+    @if(Model.ListadoModelos != null){
+    <div>
+        @foreach(var modelo in Model.ListadoModelos){
+            <p>@modelo.Nombre</p>
+        }
+    </div>
+    }
+</div>

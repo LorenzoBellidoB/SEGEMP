@@ -19,9 +19,12 @@ namespace Mandaloriano.Controllers
 
                 return View(listadoPersonaVM);
             }
-            catch (Exception ex)
+            catch (HourException ex)
             {
-                return View("Error");
+                ListadoPersonaVM listadoPersonaVM = new ListadoPersonaVM();
+                listadoPersonaVM = null;
+                ViewBag.Error = ex.Message;
+                return View(listadoPersonaVM);
             }
             
         }
