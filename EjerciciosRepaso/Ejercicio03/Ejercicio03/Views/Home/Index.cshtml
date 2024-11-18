@@ -1,24 +1,129 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Concesionario - Selección de Coches";
 }
 @model Ejercicio03.ViewModels.ListadoCochesVM
-<div class="text-center">
-    <div>
+
+<div class="concesionario-container">
+    <h1 class="titulo-concesionario">¡Bienvenido al Concesionario!</h1>
+    <p class="subtitulo-concesionario">Seleccione una marca para explorar nuestros modelos disponibles</p>
+
+    <div class="selector-marca">
         <form method="post">
-            <select name="id" id="id">
-                @foreach(var marca in Model.ListadoMarcas)
+            <label for="id" class="label-marca">Elija una marca:</label>
+            <select name="id" id="id" class="dropdown-marca">
+                @foreach (var marca in Model.ListadoMarcas)
                 {
                     <option value="@marca.Id">@marca.Nombre</option>
                 }
             </select>
-            <input type="submit" value="Seleccionar" />
+            <input type="submit" value="Seleccionar" class="boton-seleccionar" />
         </form>
     </div>
-    @if(Model.ListadoModelos != null){
-    <div>
-        @foreach(var modelo in Model.ListadoModelos){
-            <p>@modelo.Nombre</p>
-        }
-    </div>
+
+    @if (Model.ListadoModelos != null && Model.ListadoModelos.Any())
+    {
+        <div class="modelos-listado">
+            <h2 class="titulo-modelos">Modelos Disponibles:</h2>
+            @foreach (var modelo in Model.ListadoModelos)
+            {
+                <div class="modelo-card">
+                    <p class="modelo-nombre">@modelo.Nombre</p>
+                </div>
+            }
+        </div>
+    }
+    else if (Model.ListadoModelos != null)
+    {
+        <div class="modelos-vacios">
+            <p>No hay modelos disponibles para la marca seleccionada. Intente con otra marca.</p>
+        </div>
     }
 </div>
+
+<style>
+    .concesionario-container {
+        font-family: Arial, sans-serif;
+        margin: 20px auto;
+        max-width: 600px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .titulo-concesionario {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .subtitulo-concesionario {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #666;
+    }
+
+    .selector-marca {
+        margin-bottom: 30px;
+    }
+
+    .label-marca {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .dropdown-marca {
+        padding: 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .boton-seleccionar {
+        margin-left: 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .boton-seleccionar:hover {
+        background-color: #0056b3;
+    }
+
+    .modelos-listado {
+        margin-top: 20px;
+    }
+
+    .titulo-modelos {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .modelo-card {
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        text-align: left;
+    }
+
+    .modelo-nombre {
+        font-size: 16px;
+        color: #444;
+    }
+
+    .modelos-vacios {
+        margin-top: 20px;
+        color: #888;
+        font-style: italic;
+    }
+</style>

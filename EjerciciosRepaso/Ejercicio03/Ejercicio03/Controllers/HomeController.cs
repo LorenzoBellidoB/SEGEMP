@@ -37,23 +37,19 @@ namespace Ejercicio03.Controllers
         [HttpPost]
         public IActionResult Index(int id)
         {
-            try
-            {
+            
+                Console.WriteLine($"ID recibido: {id}");
 
                 ListadoCochesVM listadoCochesVM = new ListadoCochesVM();
 
                 listadoCochesVM.ListadoMarcas = ClsListadoCochesBl.ObtenerMarcasBl();
 
-                listadoCochesVM.ListadoModelos = ClsListadoCochesBl.ObtenerModelosBl();
+                listadoCochesVM.ListadoModelos = ClsListadoCochesBl.ObtenerModelosBl(id);
                                 
 
                 return View(listadoCochesVM);
 
-            }catch (Exception ex)
-            {
 
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
         }
 
     }

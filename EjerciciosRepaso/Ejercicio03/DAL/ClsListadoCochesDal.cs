@@ -22,7 +22,7 @@ namespace DAL
             return listadoMarcas;
         }
 
-        public static List<ClsModelo> ObtenerModelosDal() {
+        public static List<ClsModelo> ObtenerModelosDal(int idMarca) {
             
             List<ClsModelo> listadoModelos = new List<ClsModelo>();
 
@@ -32,6 +32,15 @@ namespace DAL
             listadoModelos.Add(new ClsModelo(4, "Q5", 1));
             listadoModelos.Add(new ClsModelo(5, "Benz", 2));
             listadoModelos.Add(new ClsModelo(6, "Vito", 2)); 
+
+            for (int i = 0; i < listadoModelos.Count; i++)
+            {
+                if (listadoModelos[i].IdMarca != idMarca)
+                {
+                    listadoModelos.RemoveAt(i);
+                    i--;
+                }
+            }
 
 
             return listadoModelos;        

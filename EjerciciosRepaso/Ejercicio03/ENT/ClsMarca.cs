@@ -14,7 +14,7 @@ namespace ENT
         #endregion
 
         #region Propiedades
-        public int Id { get; }
+        public int Id { get { return id; } set { id = value; } }
         public string Nombre { get{ return nombre; } set { nombre = value; } }
         #endregion
 

@@ -19,11 +19,11 @@ namespace BL
             return listadoMarcas;
         }
 
-        public static List<ClsModelo> ObtenerModelosBl()
+        public static List<ClsModelo> ObtenerModelosBl(int idMarca)
         {
             List<ClsModelo> listadoModelos = new List<ClsModelo>();
 
-            listadoModelos = ClsListadoCochesDal.ObtenerModelosDal();
+            listadoModelos = ClsListadoCochesDal.ObtenerModelosDal(idMarca);
 
             return listadoModelos;
         }
