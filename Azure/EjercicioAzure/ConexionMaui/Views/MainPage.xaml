@@ -7,13 +7,38 @@
     <ContentPage.BindingContext>
         <vmodel:ConexionVM></vmodel:ConexionVM>
     </ContentPage.BindingContext>
+    <ScrollView>
     <VerticalStackLayout>
     <HorizontalStackLayout>
         <Label Text="Conexion con una base de datos" FontSize="Title"></Label>
         <Button Command="{Binding ConectarCommand}" Text="Conectar"></Button>
-            <Button Command="{Binding ConectarCommand}" Text="Desconectar"></Button>
+            <Button Command="{Binding DesconectarCommand}" Text="Desconectar"></Button>
         </HorizontalStackLayout>
         <Label Text="{Binding Estado}"></Label>
-        <Label Text="{Binding EstadoDesc}"></Label>
+        <Line></Line>
+        
+        <ListView ItemsSource="{Binding ListadoPersonas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                        <Border Stroke="Black" StrokeThickness="2">
+                        <HorizontalStackLayout Spacing="5">
+                            <Image WidthRequest="50" HeightRequest="50" Source="{Binding Foto}"></Image>
+                            <Label Text="{Binding Nombre}"></Label>
+                            <Label Text="{Binding Apellidos}"></Label>
+                            <Label Text="{Binding Direccion}"></Label>
+                            <Label Text="{Binding Telefono}"></Label>
+                            <Label Text="{Binding FechaNacimiento}"></Label>
+                            <Label Text="{Binding IdDepartamento}"></Label>
+                        </HorizontalStackLayout>
+                        </Border>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

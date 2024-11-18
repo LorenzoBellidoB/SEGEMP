@@ -23,10 +23,10 @@ namespace EjercicioAzure.Controllers
         public ActionResult Conexiones()
         {
 
-            Conexion conexion = new Conexion();
+            SqlConnection conexion = new SqlConnection();
             try
             {
-                conexion.ObtenerConexion();
+                conexion = ClsConexion.ObtenerConexion();
 
 
                 if (conexion.State == System.Data.ConnectionState.Open)

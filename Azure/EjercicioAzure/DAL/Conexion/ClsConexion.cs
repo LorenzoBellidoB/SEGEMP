@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Conexion
 {
-    public class Conexion
+    public class ClsConexion
     {
         
-        public SqlConnection ObtenerConexion()
+        public static SqlConnection ObtenerConexion()
         {
             SqlConnection miConexion = new SqlConnection();
             try
@@ -29,7 +29,7 @@ namespace DAL.Conexion
             
         }
 
-        public SqlConnection Desconectar()
+        public static SqlConnection Desconectar()
         {
             SqlConnection miConexion = new SqlConnection();
             try
