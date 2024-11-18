@@ -3,5 +3,13 @@
 }
 
 <div class="text-center">
-    <p>@Html.ActionLink("Conexion", "Conexion", "Home")</p>
+    <h2>Estado de la Conexion</h2>
+
+    <form method="post" action="@Url.Action("Conexiones","Home")">
+        <input type="submit" value="Conectar"/>
+    </form>
+
+    @if (ViewBag.Estado != null){
+        <p>Estado de la conexion: </p> @ViewBag.Estado
+    }
 </div>

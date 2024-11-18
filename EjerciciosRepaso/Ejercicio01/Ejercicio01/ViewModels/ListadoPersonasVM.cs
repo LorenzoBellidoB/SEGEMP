@@ -6,7 +6,11 @@ namespace Ejercicio01.ViewModels
 {
     public class ListadoPersonasVM
     {
-        public List<ClsPersona> ListadoPersonas { get; set; }
-        public List<PersonaConCheck> ListadoPersonasConCheck{ get; set; }
+        private List<ClsPersona> listadoInternoPersona;
+        public List<PersonaConCheck> ListadoPersonasConCheck{ get
+            {
+
+            }
+        }
     }
 }
