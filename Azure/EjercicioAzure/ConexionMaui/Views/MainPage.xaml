@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:ConexionMaui.ViewModels"
+             x:Class="ConexionMaui.MainPage">
+
+    <ContentPage.BindingContext>
+        <vmodel:ConexionVM></vmodel:ConexionVM>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+    <HorizontalStackLayout>
+        <Label Text="Conexion con una base de datos" FontSize="Title"></Label>
+        <Button Command="{Binding ConectarCommand}" Text="Conectar"></Button>
+            <Button Command="{Binding ConectarCommand}" Text="Desconectar"></Button>
+        </HorizontalStackLayout>
+        <Label Text="{Binding Estado}"></Label>
+        <Label Text="{Binding EstadoDesc}"></Label>
+    </VerticalStackLayout>
+</ContentPage>

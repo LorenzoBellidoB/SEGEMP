@@ -11,12 +11,11 @@ namespace Ejercicio01.Models
         #region Constructores
         public PersonaConCheck() { }
 
-        public PersonaConCheck(ClsPersona p,bool esMayor) 
+        public PersonaConCheck(ClsPersona p) 
         {
             this.Nombre = p.Nombre;
             this.Apellidos = p.Apellidos;
             this.FechaNacimiento = p.FechaNacimiento;
-            this.esMayor = esMayor;
         }
         #endregion
 

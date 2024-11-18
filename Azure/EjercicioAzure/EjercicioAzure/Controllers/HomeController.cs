@@ -18,35 +18,46 @@ namespace EjercicioAzure.Controllers
             return View();
         }
 
-        public IActionResult Conexion()
-        {
-            return View();
-        }
+
         [HttpPost]
-        public IActionResult Conexion(Conexion conex)
+        public ActionResult Conexiones()
         {
+
+            Conexion conexion = new Conexion();
             try
             {
-                conex = new Conexion();
-                using (SqlConnection con = conex.ObtenerConexion())
+                conexion.ObtenerConexion();
+
+
+                if (conexion.State == System.Data.ConnectionState.Open)
                 {
-                    if (con.State == System.Data.ConnectionState.Open)
-                    {
-                        ViewBag.estado = "Conexión exitosa";
-                    }
-                    else
-                    {
-                        ViewBag.estado = "Error: la conexión no pudo establecerse";
-                    }
+                    ViewBag.estado = "Conexión exitosa";
                 }
+                else
+                {
+                    ViewBag.estado = "Error: la conexión no pudo establecerse";
+                }
+
+
             }
             catch (Exception ex)
             {
+
                 ViewBag.estado = "Error al intentar conectar con la base de datos";
             }
+            finally
+            {
+                conexion.Close();
+            }
 
+            return View("Index");
+        }
+
+        public IActionResult Privacy()
+        {
             return View();
         }
+
     }
 
 }

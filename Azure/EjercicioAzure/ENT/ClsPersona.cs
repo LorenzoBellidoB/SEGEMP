@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENT
 {
-    internal class ClsPersona
+    public class ClsPersona
     {
     }
 }
