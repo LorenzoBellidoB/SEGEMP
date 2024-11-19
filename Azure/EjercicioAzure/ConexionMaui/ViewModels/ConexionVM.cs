@@ -50,8 +50,6 @@ namespace ConexionMaui.ViewModels
         {
             get
             {
-                listadoPersonas = ListadoDal.ListadoCompletoDal();
-
                 return listadoPersonas;
             }
         }
@@ -75,7 +73,7 @@ namespace ConexionMaui.ViewModels
             {
                 conexion = ClsConexion.ObtenerConexion();
                 estado = "Conexion exitosa";
-
+                listadoPersonas = ListadoDal.ListadoCompletoDal();
             }
             catch (Exception ex)
             {
@@ -85,6 +83,7 @@ namespace ConexionMaui.ViewModels
             {
                 conexion.Close();
                 NotifyPropertyChanged("Estado");
+                NotifyPropertyChanged("ListadoPersonas");
             }
             
         }
@@ -105,6 +104,7 @@ namespace ConexionMaui.ViewModels
             {
                 conexion = ClsConexion.Desconectar();
                 estado = "Conexion cerrada";
+                listadoPersonas = null;
 
             }
             catch (Exception ex)
@@ -115,6 +115,7 @@ namespace ConexionMaui.ViewModels
             {
                 conexion.Close();
                 NotifyPropertyChanged("Estado");
+                NotifyPropertyChanged("ListadoPersonas");
             }
 
         }
@@ -127,7 +128,6 @@ namespace ConexionMaui.ViewModels
             return sePuedeConectar;
         }
         #endregion
-
 
         #region Notify
         public event PropertyChangedEventHandler? PropertyChanged;

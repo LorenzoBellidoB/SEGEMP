@@ -55,15 +55,20 @@ namespace DAL
         {
             ClsMision mision = new ClsMision();
             List<ClsMision> lista = ListadoCompletoMisionesDal();
+            bool encontrado = false;
 
-            foreach (ClsMision m in lista)
+            int i = 0;
+
+            while (i < lista.Count && !encontrado)
             {
-                if (m.IdMision == id)
+                if (lista[i].IdMision == id)
                 {
-                    mision = m;
-                    break;
+                    mision = lista[i];
+                    encontrado = true;
                 }
+                i++;
             }
+            
             return mision;
         }
     }
