@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ENT
+namespace CrudMaui.ViewModels
 {
-    public class ClsDepartamentos
+    public class ListadoVM
     {
+
     }
 }

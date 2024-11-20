@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ENT
+namespace BL
 {
-    public class ClsDepartamentos
+    internal class ListadoBl
     {
     }
 }

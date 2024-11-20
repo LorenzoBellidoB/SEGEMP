@@ -25,25 +25,23 @@ namespace ConexionMaui.ViewModels
 
         private DelegateCommand desconectarCommand;
 
-        private List<ClsPersona> listadoPersonas = new List<ClsPersona>();
+        private List<ClsPersona> listadoPersonas;
         #endregion
 
         #region Propiedades
-        public String Estado { get { return estado; } set { estado = value;} }
+        public String Estado { get { return estado; }  }
 
-        public String EstadoDesc { get { return estado; } set { estado = value; } }
+        public String EstadoDesc { get { return estado; }  }
 
 
         public DelegateCommand ConectarCommand
         {
             get { return conectarCommand; }
-            set { conectarCommand = value; }
         }
 
         public DelegateCommand DesconectarCommand
         {
             get { return desconectarCommand; }
-            set { desconectarCommand = value; }
         }
 
         public List<ClsPersona> ListadoPersonas
@@ -59,8 +57,8 @@ namespace ConexionMaui.ViewModels
 
         public ConexionVM() 
         {
-            ConectarCommand = new DelegateCommand(ConectarCommand_Executed, ConectarCommand_CanExecute);
-            DesconectarCommand = new DelegateCommand(DesconectarCommand_Executed, DesconectarCommand_CanExecute);
+            conectarCommand = new DelegateCommand(ConectarCommand_Executed, ConectarCommand_CanExecute);
+            desconectarCommand = new DelegateCommand(DesconectarCommand_Executed, DesconectarCommand_CanExecute);
         }
         #endregion
 

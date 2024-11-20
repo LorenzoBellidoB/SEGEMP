@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ENT
 {
-    public class ClsDepartamentos
+    public class ClsDepartamento
     {
     }
 }
