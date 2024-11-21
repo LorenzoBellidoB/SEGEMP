@@ -1,0 +1,44 @@
+ENT 
+	ClsPersona:
+		private int id
+		private string nombre
+		private string apellido
+		private DateTime fechaNacimiento
+
+		public int Id {get; }
+		public string Nombre {get; set;}
+		public string Apellido {get; set;}
+		public DateTime fechaNacimiento {get; set;}
+
+
+DAL
+	ClsListadoPersonasDal:
+
+		private static listadoPersona
+
+		public static List<ClsPersona> obtenerPersonasDal()
+
+BL
+	ClsListadoPersonaBl:
+		
+		private static listadoPersona
+
+		public static List<ClsPersona> obtenerPersonasBl()
+		
+
+UI
+	Models
+		ClsPersonaConCheck: ClsPersona
+			private bool esMayor
+
+			public ClsPersonaConCheck(bool esMayor,int id, string nombre, string apellido, DateTime fechanacimiento): base(id,nombre,apellido,fechanacimiento)
+
+			private bool mayorDeEdad()
+
+
+	ViewModels
+		ListadoPersonasVM:
+			
+			public List<ClsPersona> ListadoPersonas {get; }
+
+			public List<ClsPersona> ListadoPersonasConCheck {get;}
