@@ -12,12 +12,12 @@ namespace DAL
     {
         /// <summary>
         /// Devuelve una persona de la base de datos de azure
+        /// <pre>Pre: Ninguna</pre>
+        /// <post>Post: Puede devolver null cuando no exista la persona</post>
         /// </summary>
-        /// <pre>Ninguna</pre>
-        /// <post>Puede devolver null cuando no exista la persona</post>
         /// <param name="id">Id por el que se busca a la persona</param>
         /// <returns>Devuelve una persona</returns>
-        public static ClsPersona BuscarPersonaDal(int id)
+        public static ClsPersona buscarPersonaDal(int id)
         {
 
             ClsConexion miConexion = new ClsConexion();
@@ -87,12 +87,12 @@ namespace DAL
 
         /// <summary>
         /// Borra una persona de la base de datos
+        /// <pre>Pre: Ninguna</pre>
+        /// <post>Post: Puede devolver 0 si la persona no existe</post>
         /// </summary>
-        /// <pre>Ninguna</pre>
-        /// <post>Puede devolver 0 si la persona no existe</post>
         /// <param name="id">Id por el que se busca a la persona</param>
         /// <returns>Devuelve el número de filas afectadas</returns>
-        public static int DeletePersonaDal(int id)
+        public static int deletePersonaDal(int id)
         {
             int row = 0;
 
@@ -131,12 +131,12 @@ namespace DAL
 
         /// <summary>
         /// Inserta una persona en la base de datos
+        /// <pre>Pre: Ninguna</pre>
+        /// <post>Post: Puede devolver 0 si la hay alguhn fallo en la inserción</post>
         /// </summary>
-        /// <pre>Ninguna</pre>
-        /// <post>Puede devolver 0 si la hay alguhn fallo en la inserción</post>
         /// <param name="oPersona">Persona nueva para insertar en la base de datos</param>
         /// <returns>Devuelve el número de filas afectadas</returns>
-        public static int InsertarPersonaDal(ClsPersona oPersona)
+        public static int insertarPersonaDal(ClsPersona oPersona)
         {
             int row = 0;
 
@@ -144,33 +144,27 @@ namespace DAL
 
             SqlCommand miComando = new SqlCommand();
 
-            SqlDataReader miLector;
 
 
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.Int).Value = oPersona.Nombre;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = oPersona.Nombre;
 
-            miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.Int).Value = oPersona.Apellidos;
+            miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = oPersona.Apellidos;
 
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.Int).Value = oPersona.Telefono;
+            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = oPersona.Telefono;
 
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.Int).Value = oPersona.Direccion;
+            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = oPersona.Direccion;
 
-            miComando.Parameters.Add("@fechanacimiento", System.Data.SqlDbType.Int).Value = oPersona.FechaNacimiento;
+            miComando.Parameters.Add("@fechanacimiento", System.Data.SqlDbType.VarChar).Value = oPersona.FechaNacimiento;
 
             miComando.Parameters.Add("@iddepartamento", System.Data.SqlDbType.Int).Value = oPersona.IdDepartamento;
 
 
             try
             {
-                miComando.CommandText = "INSERT FROM personas VALUES (@nombre,@apellidos,@telefono,@direccion,@fechanacimiento,@iddepartamento)";
-
                 miComando.Connection = miConexion.ObtenerConexion();
-
-                miLector = miComando.ExecuteReader();
+                miComando.CommandText = "INSERT INTO personas (nombre, apellidos, telefono, direccion, fechanacimiento, iddepartamento) VALUES (@nombre, @apellidos, @telefono, @direccion, @fechanacimiento, @iddepartamento)";
 
                 row = miComando.ExecuteNonQuery();
-
-                miLector.Close();
 
             }
             catch (Exception ex)
@@ -187,12 +181,12 @@ namespace DAL
 
         /// <summary>
         /// Actualiza una persona en la base de datos
+        /// <pre>Pre: Ninguna</pre>
+        /// <post>Post: Puede devolver 0 si la hay alguhn fallo en la actualización</post>
         /// </summary>
-        /// <pre>Ninguna</pre>
-        /// <post>Puede devolver 0 si la hay alguhn fallo en la actualización</post>
         /// <param name="oPersona">Persona a actualizar</param>
         /// <returns>Devuelve el número de filas afectadas</returns>
-        public static int UpdatePersonaDal(ClsPersona oPersona)
+        public static int updatePersonaDal(ClsPersona oPersona)
         {
             int row = 0;
 

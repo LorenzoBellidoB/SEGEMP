@@ -50,15 +50,15 @@ namespace DAL
 
                         if (miLector["Direccion"] != System.DBNull.Value)
 
-                        { oPersona.Foto = (string)miLector["Direccion"]; }
+                        { oPersona.Direccion = (string)miLector["Direccion"]; }
 
                         if (miLector["Telefono"] != System.DBNull.Value)
 
-                        { oPersona.Foto = (string)miLector["Telefono"]; }
+                        { oPersona.Telefono = (string)miLector["Telefono"]; }
 
                         if (miLector["IDDepartamento"] != System.DBNull.Value)
 
-                        { oPersona.Foto = (string)miLector["IDDepartamento"]; }
+                        { oPersona.IdDepartamento = (int)miLector["IDDepartamento"]; }
 
                         //Si sospechamos que el campo puede ser Null en la BBDD
 

@@ -10,7 +10,11 @@ namespace BL
 {
     public class ClsListadosBl
     {
-        public List<ClsPersona> ListadoCompletoBl()
+        /// <summary>
+        /// Te devuelve el listado de personas según las normas de la empresa
+        /// </summary>
+        /// <returns></returns>
+        public static List<ClsPersona> ListadoCompletoBl()
         {
             List<ClsPersona> personas = ClsListados.ListadoCompletoDal();
 
