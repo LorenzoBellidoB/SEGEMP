@@ -1,4 +1,4 @@
-namespace EjercicioMafiosos.Models
+namespace UI.Models
 {
     public class ErrorViewModel
     {

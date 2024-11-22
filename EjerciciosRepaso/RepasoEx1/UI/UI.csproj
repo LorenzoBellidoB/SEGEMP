@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TXT\" />
+    <ProjectReference Include="..\BL\BL.csproj" />
+    <ProjectReference Include="..\ENT\ENT.csproj" />
   </ItemGroup>
 
 </Project>
