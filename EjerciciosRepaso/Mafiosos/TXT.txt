@@ -1,0 +1,67 @@
+
+
+ENT
+	ClsMafioso
+		+int Id {get,set}
+		+String Nombre {get,set}
+		+DateTime FechaNac {get,set}
+		+String Apellido {get,set}
+		
+			Constructores
+				+ClsMafioso()
+				+ClsMafioso(int id, string nombre, DateTime fechaNac, String Apellido)
+			
+
+	ClsMision
+		+int Id {get,set}
+		+String Nombre {get,set}
+		+String Descripcion {get,set}
+		+double Pago {get,set}
+		+int idMafioso {get,set}
+
+			Construcores
+				+ClsMision()
+				+ClsMision(int id, string nombre, string descripcion, double pago,int idMafioso)
+
+
+DAL
+	ClsListadosDAL
+		// La relleno fuera de obtenerTodosLosMafiosos
+		-List<ClsMafioso> listaMafiosos:
+		-List<ClsMision> listaMisiones: 
+		+ static List<ClsMafioso> obtenerTodosLosMafiososDAL()
+		+ static List<ClsMisiones> obtenerMisionesDeIdMafiosoDAL()
+		+ static ClsMafioso obtenerMafiosoPorIdDAL()
+		+ static bool eliminarMisionPorIdDAL()
+		
+
+
+
+BL
+	ClsListadosBL
+		+ static List<ClsMafioso> obtenerTodosLosMafiososBL()
+		+ static List<ClsMisiones> obtenerMisionesDeIdMafiosoBL()
+		+ static ClsMafioso obtenerMafiosoPorId()
+		//Queda poner la norma que sera una excepcion
+
+
+UI 
+
+	Controller
+		
+
+
+	MODEL
+		ClsMisionCheck : ClsMision
+			+bool Check
+
+			Constructor
+				+ClsMisionCheck()
+				+ClsMisionCheck(bool check, int id, string nombre, string descripcion, decimal pago, int idMafioso) : base(Id,Nombre,Descripcion,Pago,IdMafioso)
+					
+
+
+	VM
+		ClsMafiososMisionVM
+			+List <ClsMafioso> listoMafiosos
+			+List <ClsMision> listaMisiones
