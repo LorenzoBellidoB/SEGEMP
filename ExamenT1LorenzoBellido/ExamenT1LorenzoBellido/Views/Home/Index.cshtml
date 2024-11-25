@@ -1,0 +1,86 @@
+﻿@model ExamenT1LorenzoBellido.Models.ViewModels.MisionParaCandidatoVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Los Soprano</h1>
+
+<form method="post">
+    <select name="idMision" id="idMision">
+        @foreach (var mision in Model.ListadoMisionesVM)
+        {
+            <option value="@mision.Id">@mision.Nombre</option>
+        }
+    </select>
+    <input type="submit" value="Seleccionar" />
+</form>
+
+@if(Model.ListadoCandidatosVM != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellidos
+                </th>
+                <th>
+                    Direccion
+                </th>
+                <th>
+                    Pais
+                </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Fecha de Nacimiento
+                </th>
+                <th>
+                    Precio medio
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListadoCandidatosVM)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pais)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaNac)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sueldo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalles", "DetallesCandidato", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

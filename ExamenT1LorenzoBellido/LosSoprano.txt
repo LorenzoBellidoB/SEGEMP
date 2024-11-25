@@ -1,0 +1,85 @@
+ENT
+	ClsMision:
+		- int id
+		- string nombre
+		- int dificultad
+
+		+ int Id {get; set;}
+		+ string Nombre {get; set;}
+		+ int Dificultad {get; set;}
+
+		+ ClsMision(int id, string nombre, string descripcion)
+
+	ClsCandidato:
+		- int id
+		- string nombre
+		- string apellidos
+		- string direccion
+		- string telefono
+		- DateTime fechaNac
+		- double sueldo
+		- int idMision
+
+		+ int Id {get; set;}
+		+ string Nombre {get; set;}
+		+ string Apellidos {get; set;}
+		+ string Direccion {get; set;}
+		+ string Telefono {get; set;}
+		+ DateTime FechaNac {get; set;}
+		+ Double Sueldo {get; set;}
+		+ Int IdMision {get; set;}
+
+		+ ClsCandidato(int id, string nombre,string apellidos,string direccion,string telefono,DateTime fechaNac, double sueldo)
+
+DAL
+	ClsListadosDal:
+		- List<ClsMision> listadoMisiones
+
+		- List<ClsCandidato> listadoMafioso
+
+		+ static List<ClsMision> obtenerListadoMisionesDal()
+
+		+ static List<ClsCandidato> obtenerListadoCandidatosDal(int idMision)
+
+		+ static ClsMision buscarMisionPorIdDal()
+
+		+ static ClsCandidato buscarCandidatoPorIdDal()
+
+BL
+	ClsListadoBl:
+		+ static List<ClsMision> obtenerListadoMisionesBl()
+
+		+ static List<ClsCandidato> obtenerListadoCandidatosBl(int idMision)
+
+		+ static ClsMision buscarMisionPorIdBl()
+
+		+ static ClsCandidato buscarCandidatoPorIdBl()
+
+UI
+	Models:
+		ViewModels:
+			MisionParaCandidatoVM:
+				- List<ClsMision> listadoMisiones
+
+				- List<ClsCandidato> listadoCandidatos
+
+				+ List<ClsMision> ListadoMisiones {get;}
+
+				+ List<ClsCandidato> ListadoCandidatos {get;}
+
+				// Ambos se pueden hacer en el controller
+				+ ClsMision MisionSeleccionada {get;}
+
+				+ ClsCandidato CandidatoSeleccionado {get;}
+
+	Controller:
+		Home:
+			// Muestra en desplegable de misiones con un boton
+			Index
+
+			[HttPost]
+			// Muestra un listado de candidatos que pueden completar una mision
+			Index(int idMision)
+
+			// Mostrará los detalles del candidato seleccionado
+			DetallesCandidato(int id)

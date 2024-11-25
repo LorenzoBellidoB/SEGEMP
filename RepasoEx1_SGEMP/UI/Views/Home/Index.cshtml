@@ -1,0 +1,40 @@
+﻿@using UI.Models.VM
+@model clsListadoMisionVM
+
+@{
+    
+}
+
+<div class="text-center">
+    <h1>Misiones</h1>
+
+    <div class="container">
+        <form method="post" class="mb-3">
+            @Html.LabelFor(m => m.Id, "Selecciona una Misión:")
+            @Html.DropDownListFor(m => m.Id,
+                     new SelectList(Model.Misiones, "Id", "Nombre"),
+                     "Seleccione una misión",
+                     new { @class = "form-control text-center mt-4" })
+
+            <input type="submit" class="btn btn-primary mt-2" value="Ver">
+        </form>
+        
+        <button><a asp-action="Insertar" asp-route-id="@Model.Id">Añadir Mision</a></button>
+
+        <!-- Solo muestra la misión si hay una seleccionada -->
+        @if (Model.Nombre != null)
+        {
+            <div class="card text-center">
+                <div class="card-body">
+                    <h1 class="card-title">@Model.Id</h1>
+                    <h1 class="card-title">@Model.Nombre</h1>
+                    <p class="card-text">@Model.Descripcion</p>
+                    <h5 class="card-subtitle mb-2 text-muted">Recompensa: <strong>@Model.Recompensa</strong> créditos</h5>
+                    
+                    <a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+                    <a asp-action="Eliminar" asp-route-id="@Model.Id">Eliminar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

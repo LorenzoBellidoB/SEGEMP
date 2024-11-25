@@ -1,32 +1,48 @@
+using BL;
+using ENT;
 using Microsoft.AspNetCore.Mvc;
 using PracticaExamen.Models;
+using PracticaExamen.Models.VM;
 using System.Diagnostics;
 
 namespace PracticaExamen.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
-            return View();
+            List<ClsMafioso> listadoMafiosos = ClsListadosBL.obtenerTodosLosMafiososBL();
+            return View(listadoMafiosos);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Details(int id)
         {
-            return View();
+            MisionMafiososVM misiones = new MisionMafiososVM(id);
+
+            return View(misiones);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Delete(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ClsMafioso mafioso = ClsListadosBL.obtenerMafiosoPorIdBL(id);
+            return View(mafioso);
         }
+
+        [HttpPost]
+        public IActionResult Delete(ClsMafioso mafioso)
+        {
+            try
+            {
+                ClsListadosBL.borrarMafiosoPorIdDAL(mafioso.Id);
+                return View("Index");
+            }
+            catch (Exception ex) {
+                return View();
+            }
+
+        }
+
     }
 }

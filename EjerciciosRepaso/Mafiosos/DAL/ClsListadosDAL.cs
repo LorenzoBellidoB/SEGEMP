@@ -103,14 +103,24 @@ namespace DAL
         {
            
             bool borrar = false;
-            ClsMafioso mafiosoABorrar = listadoMafiosos.FirstOrDefault(m=> m.Id== idMafioso);   
+            ClsMafioso mafiosoABorrar = listadoMafiosos.First(m=> m.Id== idMafioso);
+            
 
             if (mafiosoABorrar != null)
             {
                 
                 listadoMafiosos.Remove(mafiosoABorrar);
+                foreach(ClsMision mision in listadoMisiones)
+                {
+                    if (mision.idMafioso == idMafioso)
+                    {
+                        listadoMisiones.Remove(mision);
+                    }
+                }
                 borrar = true; 
             }
+
+
             
             return borrar;
         }
