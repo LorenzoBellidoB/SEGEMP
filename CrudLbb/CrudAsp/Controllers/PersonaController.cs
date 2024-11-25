@@ -10,7 +10,7 @@ namespace CrudAsp.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            List<ClsPersona> listado = ClsListadosBl.ListadoCompletoBl();
+            List<ClsPersona> listado = ClsListadosBl.ListadoCompletoPersonasBl();
             return View(listado);
         }
 

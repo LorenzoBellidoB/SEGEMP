@@ -14,11 +14,18 @@ namespace BL
         /// Te devuelve el listado de personas según las normas de la empresa
         /// </summary>
         /// <returns></returns>
-        public static List<ClsPersona> ListadoCompletoBl()
+        public static List<ClsPersona> ListadoCompletoPersonasBl()
         {
-            List<ClsPersona> personas = ClsListados.ListadoCompletoDal();
+            List<ClsPersona> personas = ClsListados.ListadoCompletoPersonasDal();
 
             return personas;
+        }
+
+        public static List<ClsDepartamento> ListadoCompletoDepartamentosBl()
+        {
+            List<ClsDepartamento> departamentos = ClsListados.ListadoCompletoDepartamentosDal();
+
+            return departamentos;
         }
     }
 }

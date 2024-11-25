@@ -14,7 +14,7 @@ namespace DAL
         /// Devuelve un listado de personas de la base de datos de azure
         /// </summary>
         /// <returns>listado de personas</returns>
-        public static List<ClsPersona> ListadoCompletoDal()
+        public static List<ClsPersona> ListadoCompletoPersonasDal()
         {
             List<ClsPersona> personas = new List<ClsPersona>();
 
@@ -86,6 +86,60 @@ namespace DAL
                 miConexion.Desconectar();
             }
             return personas;
+        }
+
+        /// <summary>
+        /// Devuelve un listado de personas de la base de datos de azure
+        /// </summary>
+        /// <returns>listado de personas</returns>
+        public static List<ClsDepartamento> ListadoCompletoDepartamentosDal()
+        {
+            List<ClsDepartamento> departamentos = new List<ClsDepartamento>();
+
+            ClsConexion miConexion = new ClsConexion();
+
+            SqlCommand miComando = new SqlCommand();
+
+            SqlDataReader miLector;
+
+            ClsDepartamento oDepartamento;
+
+            try
+            {
+
+
+                miComando.CommandText = "SELECT * FROM departamentos";
+
+                miComando.Connection = miConexion.ObtenerConexion(); ;
+
+                miLector = miComando.ExecuteReader();
+
+                if (miLector.HasRows)
+                {
+                    while (miLector.Read())
+                    {
+                        oDepartamento = new ClsDepartamento();
+
+                        oDepartamento.Id = (int)miLector["ID"];
+
+                        oDepartamento.Nombre = (string)miLector["Nombre"];
+
+                        departamentos.Add(oDepartamento);
+                    }
+                }
+                miLector.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                miConexion.Desconectar();
+            }
+            return departamentos;
         }
     }
 }

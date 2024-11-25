@@ -19,14 +19,12 @@
              BackgroundColor="IndianRed"
              WidthRequest="30"
              HeightRequest="30"
-             CornerRadius="80"
-             Clicked="ImageButton_Clicked" />
+             CornerRadius="80" />
                     <ImageButton Source="papelera.png" 
              BackgroundColor="LightGreen"
              WidthRequest="30"
              HeightRequest="30"
-             CornerRadius="80"
-             Clicked="ImageButton_Clicked" />
+             CornerRadius="80" />
                 </HorizontalStackLayout>
 
                 <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonas}">
@@ -50,7 +48,6 @@
                          WidthRequest="30"
                          HeightRequest="30"
                          CornerRadius="80"
-                         Clicked="ImageButton_Clicked"
                          Grid.Row="0" VerticalOptions="End" HorizontalOptions="End"/>
 
     </Grid>
