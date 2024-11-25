@@ -78,9 +78,10 @@ namespace CrudAsp.Controllers
         }
 
         // POST: PersonaController/Delete/5
+        [ActionName("Delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeletePost(int id)
         {
             try
             {
