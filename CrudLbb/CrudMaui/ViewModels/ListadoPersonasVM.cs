@@ -51,7 +51,7 @@ namespace CrudMaui.ViewModels
         public ClsPersona PersonaSeleccionada
         {
             get { return personaSeleccionada; }
-            set { personaSeleccionada = value; eliminarCommand.RaiseCanExecuteChanged(); NotifyPropertyChanged("PersonaSeleccionada"); }
+            set { personaSeleccionada = value; eliminarCommand.RaiseCanExecuteChanged(); editarCommand.RaiseCanExecuteChanged(); NotifyPropertyChanged("PersonaSeleccionada"); }
         }
         #endregion
 
@@ -112,18 +112,18 @@ namespace CrudMaui.ViewModels
         #region Métodos
         private async void EditarCommand_Executed()
         {
-            Dictionary<string, object> dic = new Dictionary<string, object>();
+            Dictionary<string, object> diccionarioMandar = new Dictionary<string, object>();
 
-            dic.Add("Persona", personaSeleccionada);
+            diccionarioMandar.Add("Persona", PersonaSeleccionada);
 
-            await Shell.Current.GoToAsync("EditarPersona", dic);
+            await Shell.Current.GoToAsync("///editar", diccionarioMandar);
         }
 
         private bool EditarCommand_CanExecute()
         {
             bool res = false;
 
-            if(listadoPersonas != null)
+            if(personaSeleccionada != null)
             {
                 res = true;
             }
@@ -131,20 +131,29 @@ namespace CrudMaui.ViewModels
             return res;
         }
 
-        private void EliminarCommand_Executed()
+        private async void EliminarCommand_Executed()
         {
+            // Muestra una confirmación antes de eliminar
+            bool confirmacion = await Application.Current.MainPage.DisplayAlert("Confirmar eliminación","¿Estás seguro de que quieres eliminar a " + personaSeleccionada.Nombre + " " + PersonaSeleccionada.Apellidos + "?","Sí", "No");
 
+            if (confirmacion)
+            {
+                // Elimina la persona seleccionada de la lista
+                listadoPersonas.Remove(personaSeleccionada);
+                ClsServiciosBl.deletePersonaBl(personaSeleccionada.Id);
+                listadoPersonas = ClsListadosBl.ListadoCompletoPersonasBl();
+                personaSeleccionada = null;
+            }
         }
 
         private bool EliminarCommand_CanExecute()
         {
             bool res = false;
 
-            if (listadoPersonas != null)
+            if (personaSeleccionada != null)
             {
                 res = true;
             }
-
 
             return res;
         }

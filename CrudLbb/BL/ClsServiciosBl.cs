@@ -64,5 +64,13 @@ namespace BL
             return row;
         
         }
+
+        public static ClsDepartamento buscarDepartamentoBl(int id)
+        {
+            ClsDepartamento departamento = ClsServiciosDal.buscarDepartamentoDal(id);
+
+            return departamento;
+        }
+
     }
 }

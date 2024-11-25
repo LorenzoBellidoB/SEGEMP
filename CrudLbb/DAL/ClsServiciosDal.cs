@@ -101,8 +101,6 @@ namespace DAL
 
             SqlCommand miComando = new SqlCommand();
 
-            SqlDataReader miLector;
-
             miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
 
             try
@@ -111,11 +109,10 @@ namespace DAL
 
                 miComando.Connection = miConexion.ObtenerConexion();
 
-                miLector = miComando.ExecuteReader();
 
                 row = miComando.ExecuteNonQuery();
 
-                miLector.Close();
+               
 
             }
             catch (Exception ex)
@@ -194,34 +191,26 @@ namespace DAL
 
             SqlCommand miComando = new SqlCommand();
 
-            SqlDataReader miLector;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = oPersona.Nombre;
 
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = oPersona.Id;
+            miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = oPersona.Apellidos;
 
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.Int).Value = oPersona.Nombre;
+            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = oPersona.Telefono;
 
-            miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.Int).Value = oPersona.Apellidos;
+            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = oPersona.Direccion;
 
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.Int).Value = oPersona.Telefono;
-
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.Int).Value = oPersona.Direccion;
-
-            miComando.Parameters.Add("@fechanacimiento", System.Data.SqlDbType.Int).Value = oPersona.FechaNacimiento;
+            miComando.Parameters.Add("@fechanacimiento", System.Data.SqlDbType.DateTime).Value = oPersona.FechaNacimiento;
 
             miComando.Parameters.Add("@iddepartamento", System.Data.SqlDbType.Int).Value = oPersona.IdDepartamento;
 
 
             try
             {
-                miComando.CommandText = "UPDATE FROM personas  SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @telefono, Direccion = @direccion, FechaNacimiento = @fechanacimiento, IDDepartamento = @iddepartamento WHERE ID = @id";
+                miComando.CommandText = "UPDATE personas SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @telefono, Direccion = @direccion, FechaNacimiento = @fechanacimiento, IDDepartamento = @iddepartamento WHERE ID = @id";
 
                 miComando.Connection = miConexion.ObtenerConexion();
 
-                miLector = miComando.ExecuteReader();
-
                 row = miComando.ExecuteNonQuery();
-
-                miLector.Close();
 
             }
             catch (Exception ex)
@@ -234,6 +223,54 @@ namespace DAL
             }
 
             return row;
+        }
+
+        public static ClsDepartamento buscarDepartamentoDal(int id)
+        {
+
+            ClsConexion miConexion = new ClsConexion();
+
+            SqlCommand miComando = new SqlCommand();
+
+            SqlDataReader miLector;
+
+            ClsDepartamento oDept = new ClsDepartamento();
+
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+
+            try
+            {
+                miComando.CommandText = "SELECT * FROM departamentos WHERE ID = @id";
+
+                miComando.Connection = miConexion.ObtenerConexion();
+
+                miLector = miComando.ExecuteReader();
+
+                if (miLector.HasRows)
+                {
+                    while (miLector.Read())
+                    {
+                        oDept = new ClsDepartamento();
+
+                        oDept.Id = (int)miLector["ID"];
+
+                        oDept.Nombre = (string)miLector["Nombre"];
+
+                    }
+                }
+                miLector.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                miConexion.Desconectar();
+            }
+            return oDept;
         }
     }
 }

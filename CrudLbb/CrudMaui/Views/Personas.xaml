@@ -19,15 +19,17 @@
          BackgroundColor="LightGreen"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80" />
+         CornerRadius="80"
+         Command="{Binding EditarCommand}"/>
                     <ImageButton Source="papelera.png" 
          BackgroundColor="IndianRed"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80" />
+         CornerRadius="80" 
+         Command="{Binding EliminarCommand}"/>
                 </HorizontalStackLayout>
 
-                <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonas}">
+                <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonas}" SelectedItem="{Binding PersonaSeleccionada}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

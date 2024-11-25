@@ -1,4 +1,5 @@
 ﻿using BL;
+using CrudAsp.Models;
 using ENT;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +11,31 @@ namespace CrudAsp.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            List<ClsPersona> listado = ClsListadosBl.ListadoCompletoPersonasBl();
-            return View(listado);
+            try
+            {
+                ClsListadoPersonasConNombreDept listado = new ClsListadoPersonasConNombreDept();
+
+                return View(listado.ListadoPersonasNombreDept);
+            }catch (Exception ex)
+            {
+                return View("Error");
+            }
+            
         }
 
         // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
-            ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
+            try
+            {
+                ClsPersonaConNombreDepartamento persona = new ClsPersonaConNombreDepartamento(id);
 
-            return View(persona);
+                return View(persona);
+            }catch (Exception ex)
+            {
+                return View("Error");
+            }
+            
         }
 
         // GET: PersonaController/Create
@@ -51,7 +67,8 @@ namespace CrudAsp.Controllers
         // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
+            return View(persona);
         }
 
         // POST: PersonaController/Edit/5
@@ -61,20 +78,29 @@ namespace CrudAsp.Controllers
         {
             try
             {
+                ClsServiciosBl.updatePersonaBl(persona);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View("Error");
             }
         }
 
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
+            try
+            {
+                ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
 
-            return View(persona);
+                return View(persona);
+            }
+            catch
+            {
+                return View("Error");
+            }
+            
         }
 
         // POST: PersonaController/Delete/5
