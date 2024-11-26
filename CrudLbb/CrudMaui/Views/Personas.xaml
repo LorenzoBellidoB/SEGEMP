@@ -8,6 +8,7 @@
         <vmodel:ListadoPersonasVM></vmodel:ListadoPersonasVM>
     </ContentPage.BindingContext>
 
+
     <Grid Padding="10">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -27,6 +28,12 @@
          HeightRequest="30"
          CornerRadius="80" 
          Command="{Binding EliminarCommand}"/>
+                    <ImageButton Source="dotnet_bot.png"
+        BackgroundColor="Red"
+        WidthRequest="30"
+        HeightRequest="30"
+        CornerRadius="80" 
+        Command="{Binding RefrescarCommand}"/>
                 </HorizontalStackLayout>
 
                 <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonas}" SelectedItem="{Binding PersonaSeleccionada}">

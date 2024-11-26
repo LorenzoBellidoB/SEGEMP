@@ -14,6 +14,7 @@
         <ShellContent Title="Departamentos"
               ContentTemplate="{DataTemplate views:Departamentos}" />
     </FlyoutItem>
+    <ShellContent Title="Editar" ContentTemplate="{DataTemplate views:EditarPersona}" Route="EditarPersona"></ShellContent>
     <ShellContent Title="Info"
                   ContentTemplate="{DataTemplate views:Info}">
     </ShellContent>

@@ -18,6 +18,7 @@ namespace CrudMaui.ViewModels
         private List<ClsPersona> listadoPersonas = new List<ClsPersona>();
         private DelegateCommand eliminarCommand;
         private DelegateCommand editarCommand;
+        private DelegateCommand refrescarCommand;
         private ClsPersona personaSeleccionada;
         #endregion
 
@@ -26,7 +27,6 @@ namespace CrudMaui.ViewModels
         {
             get
             {
-                listadoPersonas = ClsListadosBl.ListadoCompletoPersonasBl();
                 return listadoPersonas;
             }
         }
@@ -48,10 +48,18 @@ namespace CrudMaui.ViewModels
             }
         }
 
+        public DelegateCommand RefrescarCommand
+        {
+            get
+            {
+                return refrescarCommand;
+            }
+        }
+
         public ClsPersona PersonaSeleccionada
         {
             get { return personaSeleccionada; }
-            set { personaSeleccionada = value; eliminarCommand.RaiseCanExecuteChanged(); editarCommand.RaiseCanExecuteChanged(); NotifyPropertyChanged("PersonaSeleccionada"); }
+            set { personaSeleccionada = value; eliminarCommand.RaiseCanExecuteChanged(); editarCommand.RaiseCanExecuteChanged(); refrescarCommand.RaiseCanExecuteChanged(); NotifyPropertyChanged("PersonaSeleccionada"); }
         }
         #endregion
 
@@ -69,6 +77,8 @@ namespace CrudMaui.ViewModels
                 // Inicializa los comandos
                 eliminarCommand = new DelegateCommand(EliminarCommand_Executed, EliminarCommand_CanExecute);
                 editarCommand = new DelegateCommand(EditarCommand_Executed, EditarCommand_CanExecute);
+                refrescarCommand = new DelegateCommand(RefrescarCommand_Executed, RefrescarCommand_CanExecute);
+                NotifyPropertyChanged("ListadoPersonas");
             }
             catch (Exception ex)
             {
@@ -116,7 +126,7 @@ namespace CrudMaui.ViewModels
 
             diccionarioMandar.Add("Persona", PersonaSeleccionada);
 
-            await Shell.Current.GoToAsync("///editar", diccionarioMandar);
+            await Shell.Current.GoToAsync("///EditarPersona", diccionarioMandar);
         }
 
         private bool EditarCommand_CanExecute()
@@ -138,10 +148,7 @@ namespace CrudMaui.ViewModels
 
             if (confirmacion)
             {
-                // Elimina la persona seleccionada de la lista
-                listadoPersonas.Remove(personaSeleccionada);
                 ClsServiciosBl.deletePersonaBl(personaSeleccionada.Id);
-                listadoPersonas = ClsListadosBl.ListadoCompletoPersonasBl();
                 personaSeleccionada = null;
             }
         }
@@ -154,6 +161,19 @@ namespace CrudMaui.ViewModels
             {
                 res = true;
             }
+
+            return res;
+        }
+
+        private async void RefrescarCommand_Executed()
+        {
+            listadoPersonas = new List<ClsPersona>(ClsListadosBl.ListadoCompletoPersonasBl());
+            
+        }
+
+        private bool RefrescarCommand_CanExecute()
+        {
+            bool res = true;
 
             return res;
         }
