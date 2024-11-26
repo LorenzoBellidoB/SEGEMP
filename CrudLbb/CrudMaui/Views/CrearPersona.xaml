@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:CrudMaui.ViewModels"
+             x:Class="CrudMaui.Views.CrearPersona"
+             Title="CrearPersona">
+    <ContentPage.BindingContext>
+        <vmodel:CrearPersonaVM></vmodel:CrearPersonaVM>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <Entry Placeholder="Nombre" Text="{Binding Persona.Nombre}"></Entry>
+        <Entry Placeholder="Apellidos" Text="{Binding Persona.Apellidos}"></Entry>
+        <Entry Placeholder="Telefono" Text="{Binding Persona.Telefono}"></Entry>
+        <Entry Placeholder="Direccion" Text="{Binding Persona.Direccion}"></Entry>
+        <Entry Placeholder="Foto" Text="{Binding Persona.Foto}"></Entry>
+        <DatePicker Date="{Binding Persona.FechaNacimiento}"></DatePicker>
+        <Picker ItemsSource="{Binding ListadoDepartamentos}" SelectedItem="{Binding DepartamentoSeleccionado}"
+                ItemDisplayBinding="{Binding Nombre}">
+        </Picker>
+        <Button Text="Guardar" Command="{Binding GuardarCommand}"></Button>
+    </VerticalStackLayout>
+</ContentPage>

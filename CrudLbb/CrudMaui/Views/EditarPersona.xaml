@@ -8,5 +8,13 @@
             Text="Editar Persona"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Entry Placeholder="Nombre"></Entry>
+        <Entry Placeholder="Apellidos"></Entry>
+        <Entry Placeholder="Telefono"></Entry>
+        <Entry Placeholder="Direccion"></Entry>
+        <Entry Placeholder="Foto"></Entry>
+        <Entry Placeholder="FechaNacimiento"></Entry>
+        <Entry Placeholder="IdDepartamento"></Entry>
+        <Button Text="Guardar"></Button>
     </VerticalStackLayout>
 </ContentPage>

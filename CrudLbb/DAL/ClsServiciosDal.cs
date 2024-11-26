@@ -191,6 +191,8 @@ namespace DAL
 
             SqlCommand miComando = new SqlCommand();
 
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = oPersona.Id;
+
             miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = oPersona.Nombre;
 
             miComando.Parameters.Add("@apellidos", System.Data.SqlDbType.VarChar).Value = oPersona.Apellidos;
@@ -208,7 +210,7 @@ namespace DAL
 
             try
             {
-                miComando.CommandText = "UPDATE personas SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @telefono, Direccion = @direccion, Foto = @foto FechaNacimiento = @fechanacimiento, IDDepartamento = @iddepartamento WHERE ID = @id";
+                miComando.CommandText = "UPDATE personas SET Nombre = @nombre, Apellidos = @apellidos, Telefono = @telefono, Direccion = @direccion, Foto = @foto, FechaNacimiento = @fechanacimiento, IDDepartamento = @iddepartamento WHERE ID = @id";
 
                 miComando.Connection = miConexion.ObtenerConexion();
 

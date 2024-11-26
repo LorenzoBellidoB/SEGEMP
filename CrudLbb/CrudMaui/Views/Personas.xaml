@@ -5,7 +5,7 @@
              x:Class="CrudMaui.Views.Personas">
 
     <ContentPage.BindingContext>
-        <vmodel:ListadoPersonasVM></vmodel:ListadoPersonasVM>
+        <vmodel:ListadoPersonasDeptVM></vmodel:ListadoPersonasDeptVM>
     </ContentPage.BindingContext>
 
 
@@ -20,29 +20,27 @@
          BackgroundColor="LightGreen"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80"
-         Command="{Binding EditarCommand}"/>
+         CornerRadius="80"/>
                     <ImageButton Source="papelera.png" 
          BackgroundColor="IndianRed"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80" 
-         Command="{Binding EliminarCommand}"/>
+         CornerRadius="80" />
                     <ImageButton Source="dotnet_bot.png"
-        BackgroundColor="Red"
+        BackgroundColor="MediumPurple"
         WidthRequest="30"
         HeightRequest="30"
-        CornerRadius="80" 
-        Command="{Binding RefrescarCommand}"/>
+        CornerRadius="80" />
                 </HorizontalStackLayout>
 
-                <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonas}" SelectedItem="{Binding PersonaSeleccionada}">
+                <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonasDept}" SelectedItem="{Binding PersonaSeleccionada}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
                                     <Image Source="{Binding Foto}" HeightRequest="50" WidthRequest="50"></Image>
                                     <Label Text="{Binding Nombre}"></Label>
+                                    <Label Text="{Binding NombreDept}"></Label>
                                 </HorizontalStackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -55,6 +53,7 @@
                      WidthRequest="30"
                      HeightRequest="30"
                      CornerRadius="80"
+                     Command="{Binding CrearCommand}"
                      Grid.Row="0" VerticalOptions="End" HorizontalOptions="End"/>
 
     </Grid>

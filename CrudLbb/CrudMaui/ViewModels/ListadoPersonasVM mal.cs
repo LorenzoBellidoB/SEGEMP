@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CrudMaui.ViewModels
 {
-    public class ListadoPersonasVM
+    /*public class ListadoPersonasVM: INotifyPropertyChanged
     {
         #region Atributos
         private List<ClsPersona> listadoPersonas = new List<ClsPersona>();
@@ -148,6 +148,7 @@ namespace CrudMaui.ViewModels
 
             if (confirmacion)
             {
+                listadoPersonas.Remove(personaSeleccionada);
                 ClsServiciosBl.deletePersonaBl(personaSeleccionada.Id);
                 personaSeleccionada = null;
             }
@@ -168,7 +169,7 @@ namespace CrudMaui.ViewModels
         private async void RefrescarCommand_Executed()
         {
             listadoPersonas = new List<ClsPersona>(ClsListadosBl.ListadoCompletoPersonasBl());
-            
+            NotifyPropertyChanged("ListadoPersonas");
         }
 
         private bool RefrescarCommand_CanExecute()
@@ -178,5 +179,5 @@ namespace CrudMaui.ViewModels
             return res;
         }
         #endregion
-    }
+    }*/
 }
