@@ -40,9 +40,7 @@ namespace BL
 
             ClsMision misonSeleccionada = listadoMisiones[idMision - 1];
 
-            bool encontrado = false;
-
-            int i = 0;
+           
 
             foreach (ClsCandidato cand in listadoCandidatos) 
             { 
