@@ -10,12 +10,12 @@
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Personas"
-              ContentTemplate="{DataTemplate views:Personas}" />
+              ContentTemplate="{DataTemplate views:Personas}" Route="Personas" />
         <ShellContent Title="Departamentos"
-              ContentTemplate="{DataTemplate views:Departamentos}" />
+              ContentTemplate="{DataTemplate views:Departamentos}" Route="Departamentos"/>
     </FlyoutItem>
-    <ShellContent Title="Editar" ContentTemplate="{DataTemplate views:EditarPersona}" Route="EditarPersona"></ShellContent>
-    <ShellContent Title="Crear" ContentTemplate="{DataTemplate views:CrearPersona}" Route="CrearPersona"></ShellContent>
+    <ShellContent Title="Editar" ContentTemplate="{DataTemplate views:EditarPersona}" Route="EditarPersona" FlyoutItemIsVisible="False"></ShellContent>
+    <ShellContent Title="Crear" ContentTemplate="{DataTemplate views:CrearPersona}" Route="CrearPersona" FlyoutItemIsVisible="False"></ShellContent>
     <ShellContent Title="Info"
                   ContentTemplate="{DataTemplate views:Info}">
     </ShellContent>

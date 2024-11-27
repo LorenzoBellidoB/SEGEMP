@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:CrudMaui.ViewModels"
              x:Class="CrudMaui.Views.EditarPersona"
              Title="EditarPersona">
+    <ContentPage.BindingContext>
+        <vmodel:EditarPersonaVM></vmodel:EditarPersonaVM>
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout>
-        <Label 
-            Text="Editar Persona"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Entry Placeholder="Nombre"></Entry>
-        <Entry Placeholder="Apellidos"></Entry>
-        <Entry Placeholder="Telefono"></Entry>
-        <Entry Placeholder="Direccion"></Entry>
-        <Entry Placeholder="Foto"></Entry>
-        <Entry Placeholder="FechaNacimiento"></Entry>
-        <Entry Placeholder="IdDepartamento"></Entry>
-        <Button Text="Guardar"></Button>
+        <Entry Placeholder="Nombre" Text="{Binding PersonaEditada.Nombre}"></Entry>
+        <Entry Placeholder="Apellidos" Text="{Binding PersonaEditada.Apellidos}"></Entry>
+        <Entry Placeholder="Telefono" Text="{Binding PersonaEditada.Telefono}"></Entry>
+        <Entry Placeholder="Direccion" Text="{Binding PersonaEditada.Direccion}"></Entry>
+        <Entry Placeholder="Foto" Text="{Binding PersonaEditada.Foto}"></Entry>
+        <DatePicker Date="{Binding PersonaEditada.FechaNacimiento}"></DatePicker>
+        <Picker ItemsSource="{Binding ListadoDepartamentos}" SelectedItem="{Binding DepartamentoSeleccionado}"
+        ItemDisplayBinding="{Binding Nombre}">
+        </Picker>
+        <Button Text="Guardar" Command="{Binding GuardarCommand}"></Button>
     </VerticalStackLayout>
 </ContentPage>

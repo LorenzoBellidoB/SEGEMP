@@ -20,17 +20,21 @@
          BackgroundColor="LightGreen"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80"/>
+         CornerRadius="80"
+         Command="{Binding EditarCommand}"/>
                     <ImageButton Source="papelera.png" 
          BackgroundColor="IndianRed"
          WidthRequest="30"
          HeightRequest="30"
-         CornerRadius="80" />
-                    <ImageButton Source="dotnet_bot.png"
+         CornerRadius="80"
+         Command="{Binding EliminarCommand}"
+         />
+                    <ImageButton Source="disquete.png"
         BackgroundColor="MediumPurple"
         WidthRequest="30"
         HeightRequest="30"
-        CornerRadius="80" />
+        CornerRadius="80"
+        Command="{Binding RefrescarCommand}"/>
                 </HorizontalStackLayout>
 
                 <ListView x:Name="PersonListView" ItemsSource="{Binding ListadoPersonasDept}" SelectedItem="{Binding PersonaSeleccionada}">

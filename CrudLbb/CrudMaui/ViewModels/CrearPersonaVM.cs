@@ -1,6 +1,7 @@
 ﻿using BL;
 using EjercicioU10.ViewModels.Utilidades;
 using ENT;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace CrudMaui.ViewModels
         public ClsPersona Persona
         {
             get { return persona; }
-            set { persona = value; }
+            set { persona = value; NotifyPropertyChanged("Persona"); }
         }
         public List<ClsDepartamento> ListadoDepartamentos
         {
@@ -33,7 +34,7 @@ namespace CrudMaui.ViewModels
         public ClsDepartamento DepartamentoSeleccionado
         {
             get { return departamentoSeleccionado; }
-            set { departamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado"); }
+            set { departamentoSeleccionado = value; guardarCommand.RaiseCanExecuteChanged(); NotifyPropertyChanged("DepartamentoSeleccionado"); }
         }
         public DelegateCommand GuardarCommand
         {
@@ -80,7 +81,7 @@ namespace CrudMaui.ViewModels
         {
             bool res = false;
 
-            if(departamentoSeleccionado != null)
+            if(persona.Nombre.IsNullOrEmpty() && persona.Apellidos.IsNullOrEmpty() && persona.Direccion.IsNullOrEmpty() && persona.Telefono.IsNullOrEmpty() && persona.IdDepartamento != 0)
             {
                 res = true;
             }

@@ -1,4 +1,6 @@
 ﻿using BL;
+using CrudMaui.Models;
+using EjercicioU10.ViewModels.Utilidades;
 using ENT;
 using System;
 using System.Collections.Generic;
@@ -11,12 +13,17 @@ using System.Threading.Tasks;
 namespace CrudMaui.ViewModels
 {
     [QueryProperty(nameof(PersonaEditada), "Persona")]
-    public class clsEditarPersonaVM : INotifyPropertyChanged
+    public class EditarPersonaVM : INotifyPropertyChanged
     {
-        private int idPersona;
-        private ClsPersona personaEditada;
+        #region Atributos
+        private PersonaDept personaEditada;
+        private List<ClsDepartamento> listadoDepartamentos;
+        private ClsDepartamento departamentoSeleccionado;
+        private DelegateCommand guardarCommand;
+        #endregion
 
-        public ClsPersona PersonaEditada
+        #region Propiedades
+        public PersonaDept PersonaEditada
         {
             get { return personaEditada; }
             set
@@ -26,11 +33,30 @@ namespace CrudMaui.ViewModels
             }
         }
 
-
-        public clsEditarPersonaVM()
-        {
-
+        public List<ClsDepartamento> ListadoDepartamentos 
+        { 
+            get { return listadoDepartamentos; } 
         }
+        public ClsDepartamento DepartamentoSeleccionado
+        {
+            get { return departamentoSeleccionado; }
+            set { departamentoSeleccionado = value; NotifyPropertyChanged("DepartamentoSeleccionado");}
+        }
+
+        public DelegateCommand GuardarCommand
+        {
+            get { return guardarCommand; }
+        }
+        #endregion
+
+        #region Constructor
+        public EditarPersonaVM()
+        {
+            departamentoSeleccionado = new ClsDepartamento();
+            listadoDepartamentos = new List<ClsDepartamento>(ClsListadosBl.ListadoCompletoDepartamentosBl());
+            guardarCommand = new DelegateCommand(guardarCommand_Executed, guardarCommand_CanExecute);
+        }
+        #endregion
 
         #region Notify
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,24 +71,37 @@ namespace CrudMaui.ViewModels
         }
         #endregion
 
-        #region Metodos
+        #region Commands
 
-        private async void EnviarCommand_Executed()
+        private async void guardarCommand_Executed()
         {
-            Dictionary<string, object> diccionarioMandar = new Dictionary<string, object>();
+            if (departamentoSeleccionado.Id != 0)
+            {
+                personaEditada.IdDepartamento = departamentoSeleccionado.Id;
+            }
+            else
+            {
+                personaEditada.IdDepartamento = PersonaEditada.IdDepartamento;
+            }
+            
 
-            ClsServiciosBl.updatePersonaBl(personaEditada);
+            int row = ClsServiciosBl.updatePersonaBl(personaEditada);
 
-            diccionarioMandar.Add("Persona", PersonaEditada);
-
-            await Shell.Current.GoToAsync("///Personas", diccionarioMandar);
+            if (row > 0)
+            {
+                await Shell.Current.GoToAsync("///Personas");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "No se ha podido insertar la persona", "Aceptar");
+            }
         }
 
-        private bool EnviarCommand_CanExecute()
+        private bool guardarCommand_CanExecute()
         {
             bool res = false;
 
-            if (personaEditada != null)
+            if (departamentoSeleccionado != null || PersonaEditada.IdDepartamento != 0)
             {
                 res = true;
             }
