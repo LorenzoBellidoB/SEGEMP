@@ -17,8 +17,10 @@ namespace CrudMaui.ViewModels
         #region Atributos
         private string nombre;
         private string apellidos;
+        private string foto;
         private string direccion;
         private string telefono;
+        private DateTime fechaNacimiento;
         private int idDepartamento;
         private ClsPersona persona = new ClsPersona();
         private List<ClsDepartamento> listadoDepartamentos;
@@ -37,6 +39,11 @@ namespace CrudMaui.ViewModels
             get { return apellidos; }
             set { apellidos = value; guardarCommand.RaiseCanExecuteChanged(); }
         }
+        public string Foto
+        {
+            get { return foto; }
+            set { foto = value; guardarCommand.RaiseCanExecuteChanged(); }
+        }
         public string Direccion
         {
             get { return direccion; }
@@ -46,6 +53,12 @@ namespace CrudMaui.ViewModels
         {
             get { return telefono; }
             set { telefono = value; guardarCommand.RaiseCanExecuteChanged();  }
+        }
+
+        public DateTime FechaNacimiento
+        {
+            get { return fechaNacimiento; }
+            set { fechaNacimiento = value; guardarCommand.RaiseCanExecuteChanged(); }
         }
         public ClsPersona Persona
         {
@@ -88,8 +101,10 @@ namespace CrudMaui.ViewModels
                 persona.IdDepartamento = departamentoSeleccionado.Id;
                 persona.Nombre = nombre;
                 persona.Apellidos = apellidos;
+                persona.Foto = foto;
                 persona.Direccion = direccion;
                 persona.Telefono = telefono;
+                persona.FechaNacimiento = fechaNacimiento;
 
                 int row = ClsServiciosBl.insertarPersonaBl(persona);
                 if (row > 0)
@@ -110,7 +125,7 @@ namespace CrudMaui.ViewModels
         {
             bool res = false;
 
-            if(nombre != null && apellidos != null && direccion != null && telefono != null)
+            if(nombre != null && apellidos != null && direccion != null && telefono != null && departamentoSeleccionado.Id != 0)
             {
                 res = true;
             }
