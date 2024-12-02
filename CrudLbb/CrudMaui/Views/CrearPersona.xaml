@@ -9,12 +9,12 @@
     </ContentPage.BindingContext>
     
     <VerticalStackLayout>
-        <Entry Placeholder="Nombre" Text="{Binding Persona.Nombre}"></Entry>
-        <Entry Placeholder="Apellidos" Text="{Binding Persona.Apellidos}"></Entry>
-        <Entry Placeholder="Telefono" Text="{Binding Persona.Telefono}"></Entry>
-        <Entry Placeholder="Direccion" Text="{Binding Persona.Direccion}"></Entry>
-        <Entry Placeholder="Foto" Text="{Binding Persona.Foto}"></Entry>
-        <DatePicker Date="{Binding Persona.FechaNacimiento}"></DatePicker>
+        <Entry Placeholder="Nombre" Text="{Binding Nombre}"></Entry>
+        <Entry Placeholder="Apellidos" Text="{Binding Apellidos}"></Entry>
+        <Entry Placeholder="Telefono" Text="{Binding Telefono}"></Entry>
+        <Entry Placeholder="Direccion" Text="{Binding Direccion}"></Entry>
+        <Entry Placeholder="Foto" Text="{Binding Foto}"></Entry>
+        <DatePicker Date="{Binding FechaNacimiento, Mode=TwoWay}"></DatePicker>
         <Picker ItemsSource="{Binding ListadoDepartamentos}" SelectedItem="{Binding DepartamentoSeleccionado}"
                 ItemDisplayBinding="{Binding Nombre}">
         </Picker>

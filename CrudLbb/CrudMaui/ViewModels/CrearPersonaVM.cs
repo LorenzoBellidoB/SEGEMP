@@ -15,6 +15,11 @@ namespace CrudMaui.ViewModels
     public class CrearPersonaVM: INotifyPropertyChanged
     {
         #region Atributos
+        private string nombre;
+        private string apellidos;
+        private string direccion;
+        private string telefono;
+        private int idDepartamento;
         private ClsPersona persona = new ClsPersona();
         private List<ClsDepartamento> listadoDepartamentos;
         private ClsDepartamento departamentoSeleccionado;
@@ -22,10 +27,30 @@ namespace CrudMaui.ViewModels
         #endregion
 
         #region Propiedades
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; guardarCommand.RaiseCanExecuteChanged(); }
+        }
+        public string Apellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; guardarCommand.RaiseCanExecuteChanged(); }
+        }
+        public string Direccion
+        {
+            get { return direccion; }
+            set { direccion = value; guardarCommand.RaiseCanExecuteChanged(); }
+        }
+        public string Telefono
+        {
+            get { return telefono; }
+            set { telefono = value; guardarCommand.RaiseCanExecuteChanged();  }
+        }
         public ClsPersona Persona
         {
             get { return persona; }
-            set { persona = value; NotifyPropertyChanged("Persona"); }
+            set { persona = value; guardarCommand.RaiseCanExecuteChanged(); }
         }
         public List<ClsDepartamento> ListadoDepartamentos
         {
@@ -61,6 +86,10 @@ namespace CrudMaui.ViewModels
             try
             {
                 persona.IdDepartamento = departamentoSeleccionado.Id;
+                persona.Nombre = nombre;
+                persona.Apellidos = apellidos;
+                persona.Direccion = direccion;
+                persona.Telefono = telefono;
 
                 int row = ClsServiciosBl.insertarPersonaBl(persona);
                 if (row > 0)
@@ -81,7 +110,7 @@ namespace CrudMaui.ViewModels
         {
             bool res = false;
 
-            if(persona.Nombre.IsNullOrEmpty() && persona.Apellidos.IsNullOrEmpty() && persona.Direccion.IsNullOrEmpty() && persona.Telefono.IsNullOrEmpty() && persona.IdDepartamento != 0)
+            if(nombre != null && apellidos != null && direccion != null && telefono != null)
             {
                 res = true;
             }
