@@ -228,7 +228,12 @@ namespace DAL
 
             return row;
         }
-
+        /// <summary>
+        /// Función que busca un departamento de la base de datos por el id
+        /// </summary>
+        /// <param name="id">Id del departamento</param>
+        /// <returns>Devuelve un departamento</returns>
+        /// <returns>Devuelve un departamento</returns>
         public static ClsDepartamento buscarDepartamentoDal(int id)
         {
 

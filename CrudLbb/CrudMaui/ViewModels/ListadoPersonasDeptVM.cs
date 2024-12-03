@@ -65,7 +65,6 @@ namespace CrudMaui.ViewModels
         }
         #endregion
 
-
         #region Constructores
         public ListadoPersonasDeptVM()
         {

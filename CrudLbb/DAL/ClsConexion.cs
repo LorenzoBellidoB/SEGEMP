@@ -9,6 +9,10 @@ namespace DAL
 {
     public class ClsConexion
     {
+        /// <summary>
+        /// Metodo para obtener la conexion a la base de datos de azure
+        /// </summary>
+        /// <returns>Devuelve la conexion a la base de datos</returns>
         public SqlConnection ObtenerConexion()
         {
             SqlConnection miConexion = new SqlConnection();
@@ -20,6 +24,10 @@ namespace DAL
             return miConexion;
         }
 
+        /// <summary>
+        /// Metodo para desconectar de la base de datos de azure
+        /// </summary>
+        /// <returns>Devuelve la conexion a la base de datos</returns>
         public SqlConnection Desconectar()
         {
             SqlConnection miConexion = new SqlConnection();
