@@ -21,8 +21,9 @@ namespace CrudAsp.Controllers
                 ClsListadoPersonasConNombreDept listado = new ClsListadoPersonasConNombreDept();
                 salida = Ok(listado.ListadoPersonasNombreDept);
             }
-            catch (Exception ex){ 
-                throw new Exception(ex.Message); 
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
                 salida = BadRequest(ex.Message);
             }
 
@@ -34,7 +35,7 @@ namespace CrudAsp.Controllers
         public IActionResult Get(int id)
         {
             IActionResult salida;
-            if(id <= 0)
+            if (id <= 0)
             {
                 salida = BadRequest("El id debe ser mayor a 0");
             }
@@ -43,7 +44,7 @@ namespace CrudAsp.Controllers
                 try
                 {
                     ClsPersonaConNombreDepartamento persona = new ClsPersonaConNombreDepartamento(id);
-                    if(persona == null)
+                    if (persona == null)
                     {
                         salida = NotFound("No se ha encontrado la persona");
                     }
@@ -55,35 +56,94 @@ namespace CrudAsp.Controllers
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
-                    salida = BadRequest(ex.Message);    
+                    salida = BadRequest(ex.Message);
                 }
             }
 
-            
+
 
             return salida;
         }
 
         // POST api/<PersonaApiController>
         [HttpPost]
-        public void Post(ClsPersona persona)
+        public IActionResult Post(ClsPersona persona)
         {
+            IActionResult salida;
             if (persona == null)
             {
-                return;
+                salida = BadRequest("La persona no puede ser nula");
+
             }
+            else
+            {
+                try
+                {
+                    ClsServiciosBl.insertarPersonaBl(persona);
+                    salida = Ok("Persona insertada correctamente");
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                    salida = BadRequest(ex.Message);
+
+                }
+            }
+            return salida;
         }
 
         // PUT api/<PersonaApiController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id)
         {
+            IActionResult salida;
+
+            if (id <= 0)
+            {
+                salida = BadRequest("El id debe ser mayor a 0");
+            }
+            else
+            {
+                try
+                {
+                    ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
+                    ClsServiciosBl.updatePersonaBl(persona);
+                    salida = Ok("Persona actualizada correctamente");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                    salida = BadRequest(ex.Message);
+                }
+
+            }
+            return salida;
         }
 
         // DELETE api/<PersonaApiController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            IActionResult salida;
+            if (id <= 0)
+            {
+                salida = BadRequest("El id debe ser mayor a 0");
+            }
+            else
+            {
+                try
+                {
+                    ClsServiciosBl.deletePersonaBl(id);
+                    salida = Ok("Persona borrada correctamente");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                    salida = BadRequest(ex.Message);
+                }
+            }
+            return salida;
         }
     }
 }
