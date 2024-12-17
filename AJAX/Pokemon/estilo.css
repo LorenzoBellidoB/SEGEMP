@@ -1,0 +1,34 @@
+
+        .pokemon-card { 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            padding: 20px; 
+            width: 300px; 
+            text-align: center; 
+        } 
+        .pokemon-card img { 
+            width: 150px; 
+            height: 150px; 
+        } 
+        .pokemon-card h2 { 
+            margin: 10px 0; 
+        } 
+        .pokemon-card ul { 
+            list-style-type: none; 
+            padding: 0; 
+        } 
+        .pokemon-select {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            color: #333;
+        }
+        .pokemon-select option {
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+        }
