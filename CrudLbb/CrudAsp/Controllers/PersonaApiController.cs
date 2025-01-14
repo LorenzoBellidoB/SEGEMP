@@ -95,7 +95,7 @@ namespace CrudAsp.Controllers
 
         // PUT api/<PersonaApiController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id)
+        public IActionResult Put(int id, ClsPersona persona)
         {
             IActionResult salida;
 
@@ -107,7 +107,6 @@ namespace CrudAsp.Controllers
             {
                 try
                 {
-                    ClsPersona persona = ClsServiciosBl.buscarPersonaBl(id);
                     ClsServiciosBl.updatePersonaBl(persona);
                     salida = Ok("Persona actualizada correctamente");
                 }
