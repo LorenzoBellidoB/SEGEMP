@@ -54,7 +54,7 @@ function listarPersona(array) {
             <img class="imagen" src="${persona.foto}" width="100">
             <div id="crud">
             <button class="boton" onclick="eliminarPersona(${persona.id})">Eliminar</button>
-            <button id="editar" class="boton" onclick="eliminarPersona(${persona.id})">Editar</button>
+            <button id="editar" class="boton" onclick="editarPersona(${persona.id})">Editar</button>
             </div>
         </li>`
     ).join("");
