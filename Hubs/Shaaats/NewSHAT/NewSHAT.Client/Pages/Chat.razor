@@ -10,13 +10,13 @@
 <div class="form-group">
     <label>
         User:
-        <input @bind="userInput" />
+        <input @bind="mensajeU.NombreUsuario" />
     </label>
 </div>
 <div class="form-group">
     <label>
         Message:
-        <input @bind="messageInput" size="50" />
+        <input @bind="mensajeU.MensajeUsuario" size="50" />
     </label>
 </div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
@@ -33,8 +33,7 @@
 @code {
     private HubConnection? hubConnection;
     private List<string> messages = [];
-    private string? userInput;
-    private string? messageInput;
+    private ClsMensajeUsuario mensajeU = new ClsMensajeUsuario();
 
     protected override async Task OnInitializedAsync()
     {
@@ -42,9 +41,9 @@
             .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
             .Build();
 
-        hubConnection.On<string, string >("ReceiveMessage", (user, message) =>
+        hubConnection.On<ClsMensajeUsuario >("ReceiveMessage", (mensaje) =>
         {
-            var encodedMsg = $"{user}: {message}";
+            var encodedMsg = $"{mensaje.NombreUsuario}: {mensaje.MensajeUsuario}";
             messages.Add(encodedMsg);
             InvokeAsync(StateHasChanged);
         });
@@ -56,8 +55,7 @@
     {
         if (hubConnection is not null)
         {
-            ClsMensajeUsuario mensaje = new ClsMensajeUsuario(userInput, messageInput);
-            await hubConnection.SendAsync("SendMessage", mensaje);
+            await hubConnection.SendAsync("SendMessage", mensajeU);
         }
     }
 
