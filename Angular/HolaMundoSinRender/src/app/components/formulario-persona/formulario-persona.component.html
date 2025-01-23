@@ -5,7 +5,7 @@
     <span>Nombre:</span>
     
     <input type="text" id="nombre" formControlName="nombre"/>
-    <span *ngIf="(formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched) &&this.formulario.controls['nombre'].errors?.['required']">
+    <span *ngIf="(formulario.controls.nombre.dirty || formulario.controls.nombre.touched) &&this.formulario.controls.nombre.errors?.required">
         El nombre es obligatorio</span>
     </p>
     

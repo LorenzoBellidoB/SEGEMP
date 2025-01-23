@@ -27,7 +27,7 @@ export class FormularioPersonaComponent implements OnInit {
   saluda(){
 
     if (this.formulario.valid)
-      alert('Hola ' + this.formulario.controls['nombre'].value + ' ' + this.formulario.controls['apellidos'].value);
+      alert('Hola ' + this.formulario.controls.nombre.value + ' ' + this.formulario.controls.apellidos.value);
 
   }
 }
