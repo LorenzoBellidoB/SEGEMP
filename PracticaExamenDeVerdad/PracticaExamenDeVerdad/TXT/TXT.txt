@@ -1,0 +1,112 @@
+﻿personaje --> id, nombre, fechaNac, idBando
+Bando --> id, nombre
+get, get(id), post, put, delete
+Regla de Negocio --> Si hay menos de 5 personas de un bando no se pueden eliminar retirada tactica hora y chill
+Modelo --> personaje con edad y bando
+
+ENT
+	ClsPersonaje
+		- int id
+		- string nombre
+		- DateTime fechaNac
+		- int idBando
+
+		+ int Id {get,set}
+		+ string Nombre {get,set}
+		+ DateTime FechaNac {get,set}
+		+ int IdBando {get,set}
+
+		+ ClsPersonaje(id,nombre,fechaNac,idBando)
+		+ ClsPersonaje(nombre,fechaNac,idBando)
+		+ ClsPersonaje()
+
+	ClsBando
+		- int id
+		- string bando
+
+		+ int Id
+		+ string Bando
+
+		+ ClsCiudad(id,bando)
+		+ ClsCiudad()
+
+DAL
+	ClsListadoDal
+		- static List<ClsPersonaje> listadoPersonajes
+		- static List<ClsCiudad> listadoCiudades
+
+		+ static List<ClsPersonaje> getPersonajes()
+
+		+ static List<ClsBando> getBandos()
+
+		+ static ClsPersonaje GetPersonaje(int id)
+
+		+ static ClsBando GetBando(int id)
+
+		+ static ClsBando GetBando(int id)
+
+		+ static bool DeletePersonaje(int id)
+
+		+ static bool UpdatePersonaje(int id, ClsPersonaje p)
+
+		+ static bool AddPersonaje(ClsPersonaje p)
+
+		- static int NextId()
+
+BL
+	ClsListadoBl
+		+ static List<ClsPersonaje> getPersonajes()
+
+		+ static List<ClsBando> getBandos()
+
+		+ static ClsPersonaje GetPersonaje(int id)
+
+		+ static ClsBando GetBando(int id)
+
+		+ static ClsBando GetBando(int id)
+
+		+ static bool DeletePersonaje(int id)
+
+		+ static bool UpdatePersonaje(int id, ClsPersonaje p)
+
+		+ static bool AddPersonaje(ClsPersonaje p)
+
+UI
+	DTO
+		ClsPersonajeConEdadBando
+			- int id
+			- string nombre
+			- DateTime fechaNac
+			- int idBando
+			- string nombreBando
+			- int edad
+
+			+ int Id {get,set}
+			+ string Nombre {get,set}
+			+ DateTime FechaNac {get,set}
+			+ int IdBando {get,set}
+			+ string Nombre {get,set}
+			+ int Edad {get,set}
+
+			+ ClsPersonajeConEdadBando(id,nombre,fechaNac,idBando,nombreBando,edad)
+			+ ClsPersonajeConEdadBando(nombre,fechaNac,idBando,nombreBando,edad)
+			+ ClsPersonajeConEdadBando()
+
+	Controllers
+		API
+			PersonajeController
+				Get
+				Get(id)
+				Put
+				Post
+				Delete
+			BandoController
+				Get
+				Get(id)
+	wwwroot
+		js
+			site.jsD
+		pages
+			index.html
+		css
+			site.css

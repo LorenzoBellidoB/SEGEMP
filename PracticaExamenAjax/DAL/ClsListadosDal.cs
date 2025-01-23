@@ -67,7 +67,7 @@ namespace DAL
             bool res = true;
             try
             {
-                persona.Id = nextId();
+            persona.Id = nextId();
             listaPersonas.Add(persona);
             }catch(Exception ex)
             {
