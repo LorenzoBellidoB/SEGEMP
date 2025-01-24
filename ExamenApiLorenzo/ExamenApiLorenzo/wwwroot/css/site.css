@@ -1,0 +1,114 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+#cuerpo {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    ul#listado li, ul#detalles li {
+        background: #f9f9f9;
+        margin: 10px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+        ul#listado li div#crud {
+            margin-top: 10px;
+        }
+
+/* Buttons */
+button.boton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 5px 5px 0 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button.boton:hover {
+        background-color: #0056b3;
+    }
+
+#editar {
+    background-color: #28a745;
+}
+
+    #editar:hover {
+        background-color: #1e7e34;
+    }
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+    form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    form input[type="text"], form input[type="date"] {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+        form input[type="text"]:focus, form input[type="date"]:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+/* Feedback */
+.alert {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    ul#listado li, ul#detalles li {
+        padding: 10px;
+    }
+
+    button.boton {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    form {
+        gap: 8px;
+    }
+}
