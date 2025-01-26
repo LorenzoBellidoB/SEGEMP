@@ -59,33 +59,27 @@ function mostrarDatos() {
 
 
 // Funcion que pinta los distintos departamentos
-function listarDepartamentos(departamentos) {
-    document.getElementById("cuerpoDpt").innerHTML += departamentos.map((departamento) =>
-        `
-        <button onclick="mostrarPersonas(${departamento.id})">${departamento.nombre}</button >
-        `
-    ).join("");
-}
+// function listarDepartamentos(departamentos) {
+//     document.getElementById("cuerpoDpt").innerHTML += departamentos.map((departamento) =>
+//         `
+//         <button onclick="mostrarPersonas(${departamento.id})">${departamento.nombre}</button >
+//         `
+//     ).join("");
+// }
 // He intentado hacer el desplegable pero cuando clico no me muestra la tabla. Se debe a que lo estoy haciendo en el option y no en el select
 // pero no me ha dado tiempo para poner el id con una funcion utilizando el getbyid.value
-//function listarDepartamentos(departamentos) {
-//    let id = document.getElementById().value
-//    document.getElementById("cuerpoDpt").innerHTML =
-//        `
-//            <select onchange="mostrarPersonas(${departamento.id})">
-//        `;
-//        departamentos.map((departamento) =>
-//        `
-//        <
-//            <option id="${departamento.id}" value="${departamento.id}"></option>
-        
-//        `
-//    ).join("");
-    
-//    `
-//    </select >
-//    `
-//}
+function listarDepartamentos(departamentos) {
+    document.getElementById("deplegableDpt").innerHTML = departamentos.map((departamento) =>
+       `
+       <
+           <option id="${departamento.id}" value="${departamento.id}">${departamento.nombre}</option>
+       `
+   ).join("");
+
+    document.getElementById("deplegableDpt").addEventListener("change", function() {
+        mostrarPersonas(this.value);
+});
+}
 
 // Funcion que obtiene las personas
 function mostrarPersonas(idDpt){
