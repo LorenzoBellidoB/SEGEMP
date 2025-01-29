@@ -12,7 +12,7 @@ export class AppComponent {
   saludo = "";
 
   constructor(private router: Router){
-    
+
   }
   saludar(){
     this.saludo = "Hola";
