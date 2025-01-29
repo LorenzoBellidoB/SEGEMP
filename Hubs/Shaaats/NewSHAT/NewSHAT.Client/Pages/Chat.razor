@@ -19,6 +19,12 @@
         <input @bind="mensajeU.MensajeUsuario" size="50" />
     </label>
 </div>
+<div class="form-group">
+    <label>
+        Group:
+        <input @bind="mensajeU.Group" size="50" />
+    </label>
+</div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
 
 <hr>
