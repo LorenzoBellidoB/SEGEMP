@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:ChatMauiVM.ViewModels"
+             x:Class="ChatMauiVM.MainPage">
+
+    <ContentPage.BindingContext>
+        <vmodel:ChatVM/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+            <Entry 
+            x:Name="Group"
+            Placeholder="Escribe tu grupo"
+            Text="{Binding Grupo}"></Entry>            
+            <Entry 
+            x:Name="User"
+            Placeholder="Escribe tu mensaje"
+            Text="{Binding Nombre}"></Entry>
+
+            <Entry 
+            x:Name="Message"
+            Placeholder="Escribe tu mensaje"
+            Text="{Binding MensajeText}"></Entry>
+
+            <Button
+            x:Name="sendButton"
+            Text="Send"
+            Command="{Binding EnviarCommand}"/>
+
+            <ListView ItemsSource="{Binding ListaMensajes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="{Binding NombreUsuario}" FontAttributes="Bold"></Label>
+                                <Label Text="->"></Label>
+                                <Label Text="{Binding MensajeUsuario}"></Label>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
