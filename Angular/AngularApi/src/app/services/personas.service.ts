@@ -13,7 +13,7 @@ export class PersonasService {
 
   /*URL de mi aPI para usar en todo el Servicio*/
 
-urlWebAPI='https://crudnervion.azurewebsites.net/api/personas';
+urlWebAPI='https://joseluisasp.azurewebsites.net/api/personas';
 
 constructor() { }
 

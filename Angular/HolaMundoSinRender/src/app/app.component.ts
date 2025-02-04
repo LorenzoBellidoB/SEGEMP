@@ -5,7 +5,8 @@ import { FormularioPersonaComponent } from "./components/formulario-persona/form
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],  templateUrl: './app.component.html',
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],  
+  templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {

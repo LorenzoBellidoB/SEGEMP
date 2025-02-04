@@ -1,1 +1,35 @@
-<p>lista-personas works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let persona"> {{persona.id}} </td>
+  </ng-container>
+
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let persona"> {{persona.nombre}} </td>
+  </ng-container>
+
+  <!-- Apellidos Column -->
+  <ng-container matColumnDef="apellidos">
+    <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+    <td mat-cell *matCellDef="let persona"> {{persona.apellidos}} </td>
+  </ng-container>
+
+  <!-- Fecha de Nacimiento Column -->
+  <ng-container matColumnDef="fechaNacimiento">
+    <th mat-header-cell *matHeaderCellDef> Fecha de Nacimiento </th>
+    <td mat-cell *matCellDef="let persona"> {{persona.fechaNacimiento | date: "dd/MM/yyyy"}} </td>
+  </ng-container>
+
+  <!-- Encabezado y Cuerpo -->
+  <thead>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  </thead>
+  <tbody>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </tbody>
+
+</table>
