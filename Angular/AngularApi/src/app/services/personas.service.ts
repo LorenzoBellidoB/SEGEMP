@@ -24,4 +24,20 @@ getPersonas(): Observable<Persona[]>{
 return this.http.get<Persona[]>(this.urlWebAPI);
 
 }
+
+create(miPersona:Persona){
+  return this.http.post<Persona>(this.urlWebAPI,miPersona);
+}
+
+getById(id:number){
+  return this.http.get<Persona>(this.urlWebAPI+"/"+id);
+}
+
+update(miPersona:Persona): Observable<Persona>{
+  return this.http.put<Persona>(this.urlWebAPI+"/"+miPersona.id,miPersona);
+}
+
+delete(id:number):Observable<number>{
+  return this.http.delete<Persona>(this.urlWebAPI+"/"+id);
+}
 }
