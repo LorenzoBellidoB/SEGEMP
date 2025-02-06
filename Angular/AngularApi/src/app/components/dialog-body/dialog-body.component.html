@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  <header>
+    <h1>Crear Persona</h1>
+  </header>
+  <form [formGroup]="personaForm">
+    <p><mat-form-field>
+      <input matInput placeholder="Nombre" formControlName="nombre">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Apellidos" formControlName="apellidos">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Teléfono" formControlName="telefono">
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Dirección" formControlName="direccion">
+      <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Foto" formControlName="foto">
+      <mat-icon matSuffix>image</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Fecha de Nacimiento" formControlName="fechaNacimiento">
+      <mat-icon matSuffix>date_range</mat-icon>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput placeholder="Id Departamento" formControlName="idDepartamento">
+      <mat-icon matSuffix>location_city</mat-icon>
+    </mat-form-field></p>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardarPersona()">Guardar</button>
+</mat-dialog-actions>

@@ -13,7 +13,7 @@ export class PersonasService {
 
   /*URL de mi aPI para usar en todo el Servicio*/
 
-urlWebAPI='https://joseluisasp.azurewebsites.net/api/personas';
+urlWebAPI='https://lorenzoasp.azurewebsites.net/Api/PersonaApi';
 
 constructor() { }
 
@@ -37,7 +37,7 @@ update(miPersona:Persona): Observable<Persona>{
   return this.http.put<Persona>(this.urlWebAPI+"/"+miPersona.id,miPersona);
 }
 
-delete(id:number):Observable<number>{
-  return this.http.delete<Persona>(this.urlWebAPI+"/"+id);
+delete(id:number){
+  this.http.delete<Persona>(this.urlWebAPI+"/"+id);
 }
 }
